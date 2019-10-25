@@ -4,28 +4,6 @@ function input_download(download_url) {
   downloads[download_url] = {};
 }
 
-function isTrue(val) {
-  return true == val;
-}
-
-/*function forEach_download(before_send, onload, callback) {
-  var finished = {};
-  Object.keys(downloads).forEach(function(url) {
-    finished[url] = false;
-    before_send(url);
-    let http = new XMLHttpRequest();
-    http.open('HEAD', url);
-    http.onload = function() {
-      onload(this, url);
-      finished[url] = true;
-      if (Object.values(finished).every(isTrue)) {
-        callback();
-      }
-    };
-    http.send();
-  });
-}*/
-
 function downloader(worker) {
   let finished = {};
   Object.keys(downloads).forEach(function(url) {
@@ -37,7 +15,7 @@ function downloader(worker) {
       worker.onload(this, url);
 
       finished[url] = true;
-      if (Object.values(finished).every(isTrue)) {
+      if (Object.values(finished).every(function(val){return true==val;})) {
         worker.callback();
       }
     };
