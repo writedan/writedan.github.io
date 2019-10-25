@@ -15,5 +15,4 @@ function draw_map(features) {
   	    .attr("id",function(d){
   		      return "county" + d.properties.GEOID;
   	    });
-  });
 }
