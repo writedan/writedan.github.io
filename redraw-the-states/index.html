@@ -4,13 +4,64 @@
       <meta charset="utf-8"></meta>
       <script src="https://d3js.org/d3.v3.min.js"></script>
       <script src="https://d3js.org/topojson.v1.min.js"></script>
+      <script src = "./download_script.js"></script>
+      <script src = "./map_script.js"></script>
       <style>
+      * {
+        box-sizing: border-box;
+      }
 
+      .column {
+        float: left;
+        padding: 10px;
+        height: 500px;
+        border: solid;
+      }
+
+      .row {
+        padding: 20px;
+      }
+
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      @media screen and (max-width: 600px) {
+        .column {
+          width: 100%;
+        }
+      }
+
+      .map_row {
+        width:100%;
+        height: 75px;
+      }
+
+      .map_display_option {
+        text-align: center;
+        vertical-align: middle;
+        padding: 10% 0;
+        border: solid;
+      }
       </style>
   </head>
   <body>
-    <div id = "map_container">
-      
+    <div class="row">
+      <div class="column map_column_side" style = "width:15%;">
+      </div>
+      <div class="column map_column_side" style = "width:15%;">
+      </div>
+      <div class="column map_column_mid" id = "map_container" style = "width:50%;">
+
+      </div>
+      <div class="column map_column_side" style = "width:20%;">
+          <div class = "column map_column_side map_row map_display_option" style = "width:50%;" id = "map_display_vote">Vote</div>
+          <div class = "column map_column_side map_row map_display_option" style = "width:50%;" id = "map_display_cpvi">PVI</div>
+          <div class = "column map_column_side map_row map_display_option" style = "width:50%;" id = "map_display_swing">Swing</div>
+          <div class = "column map_column_side map_row map_display_option" style = "width:50%;" id = "map_display_trend">Trend</div>
+      </div>
     </div>
   </body>
 </html>

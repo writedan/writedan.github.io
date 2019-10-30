@@ -43,7 +43,7 @@ function download_all(progress, callback) {
       http.open('GET', url);
       http.responseType = "arraybuffer";
       http.onprogress = function(evt) {
-        progress(evt);
+        progress(http, evt);
       };
     },
 
