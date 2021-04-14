@@ -11,12 +11,8 @@
         L = I - J,
         month = 3 + f((L + 40)/44),
         day = L + 28 - 31 * f(month / 4);
-        return [month - 1, day];
+        return [month - 1, day, year];
       }
-      
-      node = document.createElement("p");
-      node.innerHTML = getEaster(2021);
-      document.appendChild(node);
     </script>
   </head>
   <body>
