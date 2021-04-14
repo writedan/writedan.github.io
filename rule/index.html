@@ -13,6 +13,16 @@
         day = L + 28 - 31 * f(month / 4);
         return [month - 1, day, year];
       }
+      
+      function getAshWednesday(year) {
+        easter = getEaster(year);
+        easterDate = new Date():
+        easterDate.setYear(easter[2]);
+        easterDate.setMonth(eater[1]);
+        easterDate.setDay(easter[0]);
+        ashWednesday = new Date(easterDate - 49 * 24 * 60 * 60 * 1000);
+        return [ashWednesday.getMonth(), ashWednesday.getDay(), year];
+      }
     </script>
   </head>
   <body>
