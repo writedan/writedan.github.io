@@ -1,7 +1,37 @@
 <html>
   <head>
     <script>
-      function getEaster(year) {
+	  function getKing(year) {
+		lsio = dateOf([10, 31, year]);
+		while (lsio.getDay() != 0) {
+			lsio = new Date(lsio - 1000 * 60 * 60 * 24);
+		}
+		return dateAs(lsio);
+	  }
+	  
+	  function getImmaculateHeart(year) {
+		return dateAs(daysAfterDate(dateOf(getSacredHeart(year)), 1));
+	  }
+	  
+	  function getSacredHeart(year) {
+		return dateAs(daysAfterDate(dateOf(getCorpusChristi(year)), 8));
+	  }
+	  
+	  function getCorpusChristi(year) {
+		return dateAs(daysAfterDate(dateOf(getPentecost(year)), 11));
+	  }
+	  
+	  function getPentecost(year) {
+		return dateAs(daysAfterDate(dateOf(getEaster(year)), 49));
+	  }
+	  
+      function getAscension(year) {
+		ascension = dateOf(getEaster(year));
+		ascension.setDate(ascension.getDate() + 39);
+		return [ascension.getMonth() + 1, ascension.getDate(), ascension.getFullYear()];
+	  }
+	  
+	  function getEaster(year) {
         var f = Math.floor,
         G = year % 19,
         C = f(year / 100),
@@ -11,19 +41,102 @@
         L = I - J,
         month = 3 + f((L + 40)/44),
         day = L + 28 - 31 * f(month / 4);
-        return [month - 1, day, year];
+        return [month, day, year];
       }
+	  
+	  function getPassionSunday(year) {
+		lent = dateOf(getAshWednesday(year));
+		lent.setDate(lent.getDate() + 32);
+		return [lent.getMonth() + 1, lent.getDate(), lent.getFullYear()];
+	  }
       
       function getAshWednesday(year) {
-        easter = getEaster(year);
-        easterDate = new Date():
-        easterDate.setYear(easter[2]);
-        easterDate.setMonth(eater[1]);
-        easterDate.setDay(easter[0]);
-        ashWednesday = new Date(easterDate - 49 * 24 * 60 * 60 * 1000);
-        return [ashWednesday.getMonth(), ashWednesday.getDay(), year];
+        easterDate = dateOf(getEaster(year));
+        ashWednesday = new Date(easterDate - 1000 * 60 * 60 * 24 * 45);
+        return [ashWednesday.getMonth() + 1, ashWednesday.getDate(), ashWednesday.getFullYear()];
       }
+	  
+	  function getEpiphany(year) {
+		return [1, 6, year];
+	  }
+	  
+	  function getChristmas(year) {
+		return [12, 25, year];
+	  }
+	  
+	  function getAdventSunday(year) {
+		sundayBeforeChristmas = new Date(year, 11, 25, 0, 0, 0, 0);
+		while (sundayBeforeChristmas.getDay() != 0) {
+			sundayBeforeChristmas = new Date(sundayBeforeChristmas - 1000 * 60 * 60 * 24);
+		}
+		
+		var adventSunday;
+		if (dateOf(getChristmas(year)).getDay() == 0) {
+			adventSunday = new Date(sundayBeforeChristmas - 1000 * 60 * 60 * 24 * (7 * 4));
+		} else {
+			adventSunday = new Date(sundayBeforeChristmas - 1000 * 60 * 60 * 24 * (7 * 3));
+		}
+		return [adventSunday.getMonth() + 1, adventSunday.getDate(), adventSunday.getFullYear()];
+	  }
+	  
+	  function dateOf(a) {
+		return new Date(a[2], a[0] - 1, a[1]);
+	  }
+	  
+	  function daysAfterDate(date, days) {
+		date.setDate(date.getDate() + days);
+		return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
+	  }
+	  
+	  function dateAs(date) {
+		return [date.getMonth() + 1, date.getDate(), date.getFullYear()];
+	  }
     </script>
+	
+	<script>
+	  function getNativityOctaveSunday(year) {
+		octave = dateOf([12, 26, year]);
+		while (octave.getDay() != 0) {
+			octave = daysAfterDate(octave, 1);
+		}
+		return dateAs(octave);
+	  }
+	  
+	  function getHolyName(year) {
+		fs = dateOf([1, 2, year]);
+		while (fs.getDate() < 6) {
+			if (fs.getDay() == 0) {
+				// Two weeks of Nativity in the new year. The first is Holy Name; second is Holy Family.
+				return dateAs(fs);
+			}
+			fs = daysAfterDate(fs, 1);
+		}
+		// One week of Nativity in the new year. The first is Holy Family.
+		return [1, 2, year];
+	  }
+	  
+	  function weeksOfNativity(year) {
+		if (dateOf(getHolyName(year + 1)).getDay() == 0) {
+			return 3;
+		} else {
+			return 2;
+		}
+	  }
+	  
+	  function getHolyFamily(year) {
+		hn = daysAfterDate(dateOf(getHolyName(year)), 1);
+		while (hn.getDay() != 0) {
+			hn = daysAfterDate(hn, 1);
+		}
+		if (hn.getDate() == 6) {
+			hn = daysAfterDate(hn, 1);
+			while (hn.getDay() != 0) {
+				hn = daysAfterDate(hn, 1);
+			}
+		}
+		return dateAs(hn);
+	  }
+	</script>
   </head>
   <body>
   </body>
