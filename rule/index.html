@@ -655,7 +655,7 @@
 			*/
 			
 			function getYaml(url, callback) {
-				url = "file:///C:/Users/sn/OneDrive/Documents/EF%20Mass%20Prayers/Divinum%20Officum/improved_webapp/" + url;
+				url = "http://daniel.writefamily.com/" + url;
 				jQuery.get(url, function(data) {
 					console.log(url+": " + data);
 					callback(YAML.parse(data));
