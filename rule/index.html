@@ -4,7 +4,6 @@
 		<style>
 			#rule {
 				width: 8in;
-				margin: 1in 1in 1in 1in;
 			}
 			
 			p {
@@ -702,6 +701,10 @@
 			
 			let morning = hour < 15;
 			document.getElementById("timeline").innerHTML = morning? "Morning Prayer" : "Evening Prayer";
+			if (morning) {
+				document.getElementById("martyrology").style.display = "none";
+				document.getElementById("intercessions").style.display = "none";
+			}
 			
 			todayDate = dateOfDay(todayDay);
 			
@@ -719,7 +722,8 @@
 				document.getElementById("prayerline").innerHTML = prayer;
 				document.getElementById("monthline").innerHTML = monthTable[month - 1];
 
-				document.getElementById("dismissal_verse").innerHTML = data.dismissal[todayDate.getDay()];
+				document.getElementById("dismisal_verse").innerHTML = data.dismissal[todayDate.getDay()].verse;
+				document.getElementById("dismisal").innerHTML = data.dismissal[todayDate.getDay()].text;
 			});
 			
 			let dayIdParts = dayId.split("-");
@@ -748,10 +752,16 @@
 				} else {
 					fromWeek["oration"] = true;
 				}
+				
 				if ("ectenia" in data) {
 					
 				} else {
 					fromWeek["ectenia"] = true;
+				}
+				
+				if ("antiphons" in data) {
+				} else {
+					fromWeek["antiphons"] = true;
 				}
 				
 				console.log(fromWeek);
