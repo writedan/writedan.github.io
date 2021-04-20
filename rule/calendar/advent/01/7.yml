@@ -57,7 +57,7 @@ evening:
   canticle:
   readings:
     -
-      verse: Revelation 18: 2, 4-5
+      verse: "Revelation 18: 2, 4-5"
       text: |
         Fallen, fallen is Babylon the great.
           It has become a dwelling place of demons,
@@ -65,7 +65,7 @@ evening:
           a haunt of every bird,
             a haunt of every foul and hateful beast.
        
-       "Come out of her, My people,
+        "Come out of her, My people,
           so that thou does not take part in her sins,
         and so that thou does not share in her plagues:
           for her sins are heaped high as heaven,
