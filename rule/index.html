@@ -1,560 +1,681 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <script>
-	  function getKing(year) {
-		lsio = dateOf([10, 31, year]);
-		while (lsio.getDay() != 0) {
-			lsio = new Date(lsio - 1000 * 60 * 60 * 24);
-		}
-		return dateAs(lsio);
-	  }
-	  
-	  function getImmaculateHeart(year) {
-		return dateAs(daysAfterDate(dateOf(getSacredHeart(year)), 1));
-	  }
-	  
-	  function getSacredHeart(year) {
-		return dateAs(daysAfterDate(dateOf(getCorpusChristi(year)), 8));
-	  }
-	  
-	  function getCorpusChristi(year) {
-		return dateAs(daysAfterDate(dateOf(getPentecost(year)), 11));
-	  }
-	  
-	  function getPentecost(year) {
-		return dateAs(daysAfterDate(dateOf(getEaster(year)), 49));
-	  }
-	  
-      function getAscension(year) {
-		ascension = dateOf(getEaster(year));
-		ascension.setDate(ascension.getDate() + 39);
-		return [ascension.getMonth() + 1, ascension.getDate(), ascension.getFullYear()];
-	  }
-	  
-	  function getEaster(year) {
-        var f = Math.floor,
-        G = year % 19,
-        C = f(year / 100),
-        H = (C - f(C / 4) - f((8 * C + 13)/25) + 19 * G + 15) % 30,
-        I = H - f(H/28) * (1 - f(29/(H + 1)) * f((21-G)/11)),
-        J = (year + f(year / 4) + I + 2 - C + f(C / 4)) % 7,
-        L = I - J,
-        month = 3 + f((L + 40)/44),
-        day = L + 28 - 31 * f(month / 4);
-        return [month, day, year];
-      } // Kyrie, eleison.
-	  
-	  function getPassionSunday(year) {
-		lent = dateOf(getAshWednesday(year));
-		lent.setDate(lent.getDate() + 32);
-		return [lent.getMonth() + 1, lent.getDate(), lent.getFullYear()];
-	  }
-      
-      function getAshWednesday(year) {
-        easterDate = dateOf(getEaster(year));
-        ashWednesday = new Date(easterDate - 1000 * 60 * 60 * 24 * 45);
-        return [ashWednesday.getMonth() + 1, ashWednesday.getDate(), ashWednesday.getFullYear()];
-      }
-	  
-	  function getEpiphany(year) {
-		return [1, 6, year];
-	  }
-	  
-	  function getChristmas(year) {
-		return [12, 25, year];
-	  }
-	  
-	  function getAdventSunday(year) {
-		sundayBeforeChristmas = new Date(year, 11, 25, 0, 0, 0, 0);
-		while (sundayBeforeChristmas.getDay() != 0) {
-			sundayBeforeChristmas = new Date(sundayBeforeChristmas - 1000 * 60 * 60 * 24);
-		}
-		
-		var adventSunday;
-		if (dateOf(getChristmas(year)).getDay() == 0) {
-			adventSunday = new Date(sundayBeforeChristmas - 1000 * 60 * 60 * 24 * (7 * 4));
-		} else {
-			adventSunday = new Date(sundayBeforeChristmas - 1000 * 60 * 60 * 24 * (7 * 3));
-		}
-		return [adventSunday.getMonth() + 1, adventSunday.getDate(), adventSunday.getFullYear()];
-	  }
-	  
-	  function dateOf(a) {
-		return new Date(a[2], a[0] - 1, a[1]);
-	  }
-	  
-	  function daysAfterDate(date, days) {
-		date.setDate(date.getDate() + days);
-		return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
-	  }
-	  
-	  function dateAs(date) {
-		return [date.getMonth() + 1, date.getDate(), date.getFullYear()];
-	  }
-    </script>
-	
-	<script>
-	  function getNativityOctaveSunday(year) {
-		octave = dateOf([12, 26, year]);
-		while (octave.getDay() != 0) {
-			octave = daysAfterDate(octave, 1);
-		}
-		return dateAs(octave);
-	  }
-	  
-	  function getHolyName(year) {
-		fs = dateOf([1, 2, year]);
-		while (fs.getDate() < 6) {
-			if (fs.getDay() == 0) {
-				// Two weeks of Nativity in the new year.
-				return dateAs(fs);
-			}
-			fs = daysAfterDate(fs, 1);
-		}
-		// One week of Nativity in the new year. 
-		return [1, 2, year];
-	  }
-	  
-	  function weeksOfNativity(year) {
-		if (dateOf(getHolyName(year + 1)).getDay() == 0) {
-			return 3;
-		} else {
-			return 2;
-		}
-	  } // There are two weeks of Nativity in the new year if Epiphany falls after a Sunday after the Octave of Christmas.
-	  
-	  function getHolyFamily(year) {
-		hn = daysAfterDate(dateOf(getHolyName(year)), 1);
-		while (hn.getDay() != 0) {
-			hn = daysAfterDate(hn, 1);
-		}
-		if (hn.getDate() == 6) {
-			hn = daysAfterDate(hn, 1);
-			while (hn.getDay() != 0) {
-				hn = daysAfterDate(hn, 1);
-			}
-		}
-		return dateAs(hn);
-	  }
-	  
-	  function daysBetween(d1, d2) {
-		return (d2 - d1)/1000/60/60/24;
-	  }
-	  
-	  function dateBetween(dc, df, dt) {
-		return dc >= df && dc <= dt;
-	  }
-	  
-	  function listSundays(year) {
-		sundayTable = {};
-		date = dateOf([1,1,year]);
-		while (date.getFullYear() == year) {
-			if (date.getDay() == 0) {
-				
+	<head>
+		<style>
+			#rule {
+				width: 11in;
+				margin: 1in 1in 1in 1in;
 			}
 			
-			date = daysAfterDate(date, 1);
-		}
-	  }
-	  
-	  function inChristmas(date) {
-		year = date.getFullYear();
-		weeks = weeksOfNativity(year);
-		if (date.getMonth() == 0) {
-			christmas = dateOf(getChristmas(year - 1));
-			christmasOctave = dateOf(getNativityOctaveSunday(year - 1));
-			daysAfterDate(christmasOctave, ((weeks - 1) * 7) + 6); // advance to the end of the Christmas season
-			return daysBetween(date, christmasOctave) >= 0;
-		} else if (date.getMonth() == 11) {
-			return daysBetween(dateOf(getChristmas(year)), date) >= 0;
-		} else {
-			return false;
-		}
-	  }
-	  
-	  function inEpiphany(date) {
-		year = date.getFullYear();
-		return dateBetween(date, dateOf(getEpiphany(year)), daysAfterDate(dateOf(lastEpiphanySunday(year)), 2));
-	  } 
-	  
-	  function lastEpiphanySunday(year) {
-		// return dateAs(new Date(dateOf(getAshWednesday(year)) - 1000 * 60 * 60 * 24));
-		return dateAs(daysAfterDate(dateOf(getAshWednesday(year)), -3));
-	  } 
-	  
-	  function lastPentecostSunday(year) {
-		return dateAs(daysAfterDate(dateOf(getKing(year)), -7));
-	  }
-	  
-	  function lastKingdomSunday(year) {
-		return dateAs(daysAfterDate(dateOf(getAdventSunday(year)), -7));
-	  }
-	  
-	  function sundaysInEpiphany(year) {
-		return daysBetween(dateOf(getHolyFamily(year)), daysAfterDate(dateOf(lastEpiphanySunday(year)), 0))/7 + 1;
-	  }
-	  
-	  function inAdvent() {}
-	  
-	  function adventBounds(year) {
-		firstSunday = getAdventSunday(year);
-		finalDay = [12, 24, year];
-		return [firstSunday, finalDay];
-	  } // [First Sunday of Advent, Christmas Eve]
-	  
-	  function christmasBounds(year) {
-		christmas = [12, 25, year];
-		return [christmas, dateAs(daysAfterDate(dateOf(lastEpiphanySunday(year + 1)), 2))];
-	  } // [Christmas, Tuesday after Last Sunday after Epiphany]
-	  
-	  function lentBounds(year) {
-		saturday = dateAs(daysAfterDate(dateOf(getPassionSunday(year)), -1));
-		return [getAshWednesday(year), saturday];
-	  } // [Ash Wednesday, Saturday before Passion Sunday]
-	  
-	  function passionBounds(year) {
-		return [getPassionSunday(year), dateAs(daysAfterDate(dateOf(getPassionSunday(year)), 13))];
-	  } // [Passion Sunday, Saturday thirteen days Later]
-	  
-	  function easterBounds(year) {
-		return [getEaster(year), dateAs(daysAfterDate(dateOf(getEaster(year)), 48))]
-	  }
-	  
-	  function pentecostBounds(year) {
-		return [getPentecost(year), dateAs(daysAfterDate(dateOf(lastPentecostSunday(year)), 6))];
-	  }
-	  
-	  function kingdomBounds(year) {
-		return [getKing(year), dateAs(daysAfterDate(dateOf(lastKingdomSunday(year)), 6))];
-	  }
-	  
-	  function bounds(year) {
-		return [adventBounds(year)[0], kingdomBounds(year + 1)[1]]
-	  }
-	  
-	  function daysInBounds(bb) {
-		bb[0] = dateOf(bb[0]);
-		bb[1] = daysAfterDate(dateOf(bb[1]), 1);
-		console.log(bb);
-		return (daysBetween(bb[0], bb[1]));
-	  }
-	  
-	  function getSeasonForDate(date) {
-		year = date.getFullYear();
-		
-		adventbb = adventBounds(year);
-		adventbb[0] = dateOf(adventbb[0]);
-		adventbb[1] = dateOf(adventbb[1]);
-		
-		christmasbb = christmasBounds(year - 1);
-		christmasbb[0] = dateOf(christmasbb[0]);
-		christmasbb[1] = dateOf(christmasbb[1]);
-		
-		christmas2bb = christmasBounds(year);
-		christmas2bb[0] = dateOf(christmas2bb[0]);
-		christmas2bb[1] = dateOf(christmas2bb[1]);
-		
-		lentbb = lentBounds(year);
-		lentbb[0] = dateOf(lentbb[0]);
-		lentbb[1] = dateOf(lentbb[1]);
-		
-		passionbb = passionBounds(year);
-		passionbb[0] = dateOf(passionbb[0]);
-		passionbb[1] = dateOf(passionbb[1]);
-		
-		easterbb = easterBounds(year);
-		easterbb[0] = dateOf(easterbb[0]);
-		easterbb[1] = dateOf(easterbb[1]);
-		
-		pentecostbb = pentecostBounds(year);
-		pentecostbb[0] = dateOf(pentecostbb[0]);
-		pentecostbb[1] = dateOf(pentecostbb[1]);
-		
-		kingdombb = kingdomBounds(year);
-		kingdombb[0] = dateOf(kingdombb[0]);
-		kingdombb[1] = dateOf(kingdombb[1]);
-		
-		
-		if (dateBetween(date, adventbb[0], adventbb[1])) {
-			return "ADVENT";
-		} else if (dateBetween(date, christmasbb[0], christmasbb[1])) {
-			return "CHRISTMAS";
-		} else if (dateBetween(date, christmas2bb[0], christmas2bb[1])) {
-			return "CHRISTMAS";
-		} else if (dateBetween(date, lentbb[0], lentbb[1])) {
-			return "LENT";
-		} else if (dateBetween(date, passionbb[0], passionbb[1])) {
-			return "PASSION";
-		} else if (dateBetween(date, easterbb[0], easterbb[1])) {
-			return "EASTER";
-		} else if (dateBetween(date, pentecostbb[0], pentecostbb[1])) {
-			return "PENTECOST";
-		} else if (dateBetween(date, kingdombb[0], kingdombb[1])) {
-			return "KINGDOM";
-		} else {
-			alert("There is something terribly wrong. Email daniel@writefamily.com");
-			return "yikes bro";
-		}
-	  }
-	  
-	  function checkAllDates(year) {
-		bb = bounds(year);
-		start = dateOf(bb[0]);
-		finish = dateOf(bb[1]);
-		day = start;
-		table = {"ADVENT":0,"CHRISTMAS":0,"LENT":0,"PASSION":0,"EASTER":0,"PENTECOST":0,"KINGDOM":0};
-		total = 0;
-		while (dateBetween(day, start, finish)) {
-			total += 1;
-			table[getSeasonForDate(day)] += 1;
-			daysAfterDate(day, 1);
-		}
-		for (key in table) {
-			table[key] = table[key]/total * 100;
-			document.getElementById(key.toLowerCase()).style.width = table[key] + "%";
-			//document.getElementById(key.toLowerCase()).innerHTML = "<center>"+key+"</center>";
-		}
-		console.log(table);
-	  }
-	</script>
-	
-	<style>
-		#rule {
-			width: 8.5in;
-			margin: 1in 1in 1in 1in;
-		}
-		
-		p {
-			font: 15px "Times New Roman";
-		}
-		
-		.section {
-			border: 1px solid;
-			margin: 15px;
-			padding: 20px;
-		}
-		
-		.section .section {
-			border: 1px dotted;
-		}
-		
-		.section .section .section {
-			border:0px;
-		}
-		
-		.verse {
-			color:red;
-			font: 12px "Times New Roman";
-		}
-	</style>
-  </head>
-  <body>
-	
-	
-	<div id="rule">
-	<div style="width:100%;border: 1px solid;height:25px;font: 11px \"times New rome\";vertical-align:center;">
-		<div id="advent" style="float:left;background-color:pink;width:0%;height:25px;"></div>
-		<div id="christmas" style="float:left;background-color:lightblue;width:0%;height:25px;"></div>
-		<div id="lent" style="float:left;background-color:purple;width:0%;height:25px;color:white;"></div>
-		<div id="passion" style="float:left;background-color:black;width:0%;height:25px;color:white;"></div>
-		<div id="easter" style="float:left;/*background-color:#ff9900;*/width:0%;height:25px;"></div>
-		<div id="pentecost" style="float:left;background-color:green;width:0%;height:25px;color:white;"></div>
-		<div id="kingdom" style="float:left;background-color:gold;width:0%;height:25px;color:black;"></div>
-	</div>
-	<h1 id = "dateline">???</h1>
-	<div class="section" id="exhortations">
-		<h2>Exhortation</h2>
-		<div class="section" >
-			<p class="verse" id ="exhortation_verse"></p>
-			<p id="exhortation"></p>
-		</div>
-		<div class="section">
-			<p class="verse" id ="call_verse"></p>
-			<p id="call"></p>
-		</div>
-	</div>
-	<div class = "section" id="invitatory">
-		<h2>Invitatory</h2>
-		<p>In the Name of the Father, and of the Son, and of the Holy Spirit:</p>
-		<p>V. O Lord, open Thou my lips.<br/>
-		R. And my mouth shall declare Thy praise.<br/>
-		V. O God, come to my assistance.</br>
-		R. O Lord, make haste to help me.</br>
-		V. By the sign of His Holy Cross</br>
-		R. Our God delivered us.</br>
-		V. Glory be to the Father, and to the Son, and to the Holy Spirit.</br>
-		R. As it was in the beginning shall now and ever be, unto the age of ages.</p>
-		<p>Amen.</p>
-	</div>
-	<div class="section">
-		<h2>Sapiental</h2>
-		<p class = "verse" id="sapiental_verse"></p>
-		<p id="sapiental"></p>
-	</div>
-	<div class="section">
-		<h2>Ectenia</h2>
-		<p class = "verse" id="ectenia_verse"></p>
-		<p id="ectenia"></p>
-	</div>
-	<div class="section">
-		<h2>Gradual</h2>
-		<p class = "verse" id="gradual_verse"></p>
-		<p id="gradual"></p>
-	</div>
-	<div class = "section" id="contrition">
-		<h2>Rite of Contrition</h2>
-		<div class="section">
-			<h3>Lord's Prayer</h3>
-			<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-			R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-		</div>
-		<div class="section">
-			<h3>Examination of Conscience</h3>
-			<p>Forgive me my sins, O Lord, forgive me my sins: the sins of my age, the sins of my youth; the sins of my soul, the sins of my body; my idle sins, my willed sins; the sins I know, the sins I do not know, and the sins I have concealed for so long and are now hidden from my memory.</p>
-		</div>
-		<div class="section">
-			<h3>Confiteor</h3>
-			<p>I confess to almighty God, to blessed Mary ever-Virgin, to blessed Michael the Archangel, to blessed John the Baptist, to the holy Apostles Peter and Paul, and to all the Saints: I have greatly sinned in thought, word, and deed: through my fault, through my fault, through my most grievous fault. Therefore I beseech blessed Mary ever-Virgin, blessed Michael the Archangel, blessed John the Baptist, the holy Apostles Peter and Paul, and all the Saints to pray for me to the Lord our God.</p>
-			<p>V. May almighty God have mercy on us, forgive us our sins, and bring us to everlasting life.</br>R. Amen.</p>
-			<p>V. May the almighty and merciful Lord have us pardon, absolution, and remission of our sins.</br>R. Amen.</p>
-		</div>
-		<div class="section">
-			<h3>Supplication</h3>
-			<p>Lord, have mercy upon us. Christ, have mercy upon us. Lord, have mercy upon us.</p>
-		</div>
-		<div class="section">
-			<h3>Doxology</h3>
-			<p>Deliver us, we beseech Thee O Lord, from all evils past, present, and to come, and by the intercession of the blessed and glorious ever-Virgin Mary, Mother of God, together with blessed Michael the Archangel, blessed John the Baptist, Thy holy Apostles Peter and Paul, and with all Thy Saints, mercifully grant peace in our days, that through the bounteous help of Thy mercy we may be always free from sin and safe from all disquiet. Through Jesus Christ our Lord Thy Son, Who lives and reigns with Thee in the unity of the Holy Spirit unto the age of ages.<br/>R. Amen.</p>
-		</div>
-	</div>
-	<div class="section">
-		<h2>Lesson</h2>
-		<div class="section">
-			<h3>Collect</h3>
-			<div class="section">
-				<p class = "verse" id="collect1_verse"></p>
-				<p id="collect1"></p>
-				<p id="collect1_antiphons"></p>
-			</div>
-			<div class="section">
-				<p class = "verse" id="collect2_verse"></p>
-				<p id="collect2"></p>
-				<p id="collect2_antiphons"></p>
-			</div>
-			<div class="section">
-				<p class = "verse" id="collect3_verse"></p>
-				<p id="collect3"></p>
-				<p id="collect3_antiphons"></p>
-			</div>
-		</div>
-		<div class="section">
-			<h3>Canticle</h3>
-			<p class = "verse" id="canticle_verse"></p>
-			<p id="canticle"></p>
-		</div>
-		<div class="section">
-			<h3>Incipit</h3>
-			<p class = "verse" id="incipit_verse"></p>
-			<p id="incipit"></p>
-		</div>
-		<div class="section">
-			<h3>Readings</h3>
-			<div class="section">
-				<p class = "verse" id="reading1_verse"></p>
-				<p id="reading1"></p>
-			</div>
-			<div class="section">
-				<p class = "verse" id="reading2_verse"></p>
-				<p id="reading2"></p>
-			</div>
-			<div class="section">
-				<p class = "verse" id="reading2_verse"></p>
-				<p id="reading2"></p>
-			</div>
-		</div>
-	</div>
-	<div class="section">
-		<h2>Divine Praises</h2>
-		<p>Blessed be God. Blessed be His Holy Name. Blessed be Jesus Christ, true God and true Man. Blessed be the Name of Jesus. Blessed be His Most Sacred Heart. Blessed be His Most Precious Blood. Blessed be Jesus in the Most Holy Sacrament. Blessed be the Holy Spirit. Blessed be the great Mother of God, Mary most Holy. Blessed be her Holy and Immaculate Conception. Blessed be her Glorious Assumption. Blessed be the name of Mary, Virgin and Mother. Blessed be Saint Joseph, her most chaste Spouse. Blessed be God in His Angels and in His Saints. Amen.</p>
-	</div>
-	</div>
-  </body>
-  <script>
-		today = dateAs(new Date());
-		var urlParams = new URLSearchParams(window.location.search);
-		if (urlParams.has("year")) today[2] = Number(urlParams.get("year"));
-		
-		switch (getSeasonForDate(dateOf(today))) {
-			case "ADVENT":
-				// yep
-			break;
-			case "CHRISTMAS":
-				if (today[1] == 12) {
-					// yep
-				} else {
-					today[2] = today[2] - 1;
+			p {
+				font: 15px "Times New Roman";
+			}
+			
+			.section {
+				border: 1px solid;
+				margin: 15px;
+				padding: 20px;
+			}
+			
+			.section .section {
+				border: 1px dotted;
+			}
+			
+			.section .section .section {
+				border:0px;
+			}
+			
+			.verse {
+				color:red;
+				font: 12px "Times New Roman";
+				margin-bottom: 0;
+			}
+			
+			.verse + p {
+				margin-top: 0;
+			}
+			
+			.instruction {
+				color: red;
+				font-weight: bold;
+				font-style: italic;
+				display: none;
+			}
+
+			li {
+				list-style-type: "— ";
+			}
+		</style>
+		<script>
+			/**
+				Time Functions
+			*/
+			
+			function dateOfDay(day) {
+				return new Date(day[2], day[0] - 1, day[1], 0, 0, 0, 0);
+			}
+			
+			function getNextDay(day) {
+				return dayOfDate(getNextDate(dateOfDay(day)));
+			}
+			
+			function getLastDay(day) {
+				return dayOfDate(getLastDate(dateOfDay(day)));
+			}
+			
+			function dayOfDate(date) {
+				return [date.getMonth() + 1, date.getDate(), date.getFullYear()];
+			}
+			
+			function moveForwardDays(date, days) {
+				let n = new Date(date);
+				n.setDate(date.getDate() + days);
+				return n;
+			}
+			
+			function getNextDate(date) {
+				return moveForwardDays(date, 1);
+			}
+			
+			function getLastDate(date) {
+				return moveForwardDays(date, -1);
+			}
+			
+			function startOfWeek(date) {
+				let n = new Date(date);
+				
+				while (n.getDay() != 0) {
+					//if (n.getMonth() == 1 && n.getDate() == 1) return n; // stop on January 1
+					n = moveForwardDays(n, -1);
 				}
-			break;
-			default:
-				today[2] = today[2] - 1;
-		}
+				
+				return n;
+			}
+			
+			function endOfWeek(date) {
+				let n = new Date(date);
+				
+				while (n.getDay() != 0) {
+					//if (n.getMonth() == 11 && n.getDate() == 31) return n; // stop on December 31
+					n = moveForwardDays(n, 1);
+				}
+				
+				return n;
+			}
+			
+			function getWeekNumber(date) {
+				let n = new Date(date);
+				let firstDay = dateOfDay([1, 1, n.getFullYear()]);
+				let dayInWeek = firstDay.getDay();
+				let numWeeks = 0;
+				while (firstDay.getFullYear() == n.getFullYear() && firstDay <= n) {
+					if (firstDay.getDay() == dayInWeek) {
+						numWeeks += 1;
+					}
+					firstDay = moveForwardDays(firstDay, 1);
+				}
+				return numWeeks;
+			}
+			
+			function weeksBetween_(date1, date2) {
+				if (date1 < date2) {
+					let n = date1;
+					date1 = date2;
+					date2 = n;
+				} 
+				
+				if (date1.getFullYear() == date2.getFullYear()) {
+					return getWeekNumber(endOfWeek(date2)) - getWeekNumber(startOfWeek(date1));
+				}
+			
+				let weeksInFirstYear = 52 - getWeekNumber(startOfWeek(date1)); // weeks remaining
+				let weeksInSecondYear = getWeekNumber(endOfWeek(date2)); // weeks accomplished
+			
+				return weeksInFirstYear + weeksInSecondYear;
+			}
+			
+			function weeksBetween(date1, date2) {
+				return Math.floor((startOfWeek(date2) - startOfWeek(date1)) / (7*24*60*60*1000)); // originally Math.ceil, but this messed up crossing the Daylight Savings during Kingdomtide. Let us hope it doesn't mess anything up here.
+			}
+			
+			function dateBetween(dc, df, dt) {
+				return dc >= df && dc <= dt;
+			}
+			
+			function daysBetween_(df, dt) {
+				if (df > dt) return (df - dt)/1000/60/60/24;
+				return (dt - df)/1000/60/60/24;
+			}
+			
+			function daysBetween(df, dt) {
+				return Math.floor(daysBetween_(df, dt));
+			}
+		</script>
 		
-		if (urlParams.has("year")) today[2] = Number(urlParams.get("year"));
-		if (urlParams.has("month")) today[0] = Number(urlParams.get("month"));
-		if (urlParams.has("day")) today[1] = Number(urlParams.get("day"));
+		<script>
+			/**
+				Liturgical Year Functions
+				
+				The liturgical year of X begins on Advent Sunday of X-1 and concludes the day before Advent Sunday of X.
+				Thus, the 2021 liturgical year began on Advent Sunday of 2020 and will conclude the Saturday before Advent Sunday of 2021.
+			*/
+			
+			function getAdventSunday(year) {
+				let n = dateOfDay(getChristmas(year));
+				if (n.getDay() == 0) {
+					n = moveForwardDays(n, -7); // If Christmas is already a Sunday, we need to move back another week.
+				}
+				n = startOfWeek(n);
+				return dayOfDate(moveForwardDays(n, -7 * 3));
+			} // The year variable is always the liturgical year. The liturgical year of 2021 began Advent Sunday 2020.
+			
+			function getChristmas(year) {
+				return [12, 25, year - 1]; // see note attached to getAdventSunday()
+			} // Since the liturgical year begins Advent the calendar year prior, the Christmas of Liturgical Year X is Christam in Calendar Year X-1
+			
+			function getHolyName(year) {
+				let n = moveForwardDays(dateOfDay(getEpiphany(year)), -1);
+				while (n.getDate() != 0 && n.getDate() > 2) {
+					if (n.getDay() == 0) break;
+					n = moveForwardDays(n, -1)
+				};
+				return n;
+			} // Holy Name is the Sunday after the Nativity Octave and before Epiphany, if one exists. Otherwise, it is January 2
+			
+			function getHolyFamily(year) {
+				let n = moveForwardDays(dateOfDay(getEpiphany(year)), 1);
+				while (n.getDay() != 0) n = moveForwardDays(n, 1);
+				return dayOfDate(n);
+			} // Holy Family is the Sunday directly after Epiphany
+			
+			function getEpiphany(year) {
+				return [1, 6, year];
+			}
+			
+			function getLent(year) {
+				return dayOfDate(moveForwardDays(dateOfDay(getPassion(year)), (-4 * 7) - 4));
+			}
+			
+			function getPassion(year) {
+				return dayOfDate(moveForwardDays(dateOfDay(getEaster(year)), -14));
+			}
+			
+			function getEaster(year) {
+				var f = Math.floor,
+				G = year % 19,
+				C = f(year / 100),
+				H = (C - f(C / 4) - f((8 * C + 13)/25) + 19 * G + 15) % 30,
+				I = H - f(H/28) * (1 - f(29/(H + 1)) * f((21-G)/11)),
+				J = (year + f(year / 4) + I + 2 - C + f(C / 4)) % 7,
+				L = I - J,
+				month = 3 + f((L + 40)/44),
+				day = L + 28 - 31 * f(month / 4);
+				return [month, day, year];
+			} // Kyrie, eleison.
+			
+			function getPentecost(year) {
+				return dayOfDate(moveForwardDays(dateOfDay(getEaster(year)), 49));
+			}
+			
+			function getKingdom(year) {
+				let n = dateOfDay([10, 31, year]);
+				while (n.getDay() != 0) {
+					n = moveForwardDays(n, -1);
+					if (n instanceof Date && isNaN(n)) {
+						alert("Enail daniel@writefamily.com with season error the fourth.");
+						return;
+					}
+				}
+				return dayOfDate(n);
+			}
+			
+			function bounds(year, season="ALL") {
+				switch (season) {
+					case "ADVENT":
+						return [getAdventSunday(year), [12, 24, year - 1]];
+						break;
+					case "CHRISTMAS":
+						return [[12, 25, year - 1], dayOfDate(moveForwardDays(dateOfDay(getLent(year)), -1))];
+						break;
+					case "CHRISTMAS_OCTAVE":
+						return [[12, 25, year - 1], [1, 1, year]];
+						break;
+					case "EPIPHANY_OCTAVE":
+						return [[1, 6, year], [1, 13, year]];
+						break;
+					case "CHRISTIAN_UNITY":
+						return [[1, 18, year], [1, 25, year]];
+						break;
+					case "LENT":
+						return [getLent(year), getLastDay(getPassion(year))];
+						break;
+					case "PASSION":
+						return [getPassion(year), getLastDay(getEaster(year))];
+						break;
+					case "EASTER":
+						return [getEaster(year), getLastDay(getPentecost(year))];
+						break;
+					case "EASTER_OCTAVE":
+						return [getEaster(year), dayOfDate(moveForwardDays(dateOfDay(getEaster(year)), 7))];
+						break;
+					case "PENTECOST":
+						return [getPentecost(year), getLastDay(getKingdom(year))];
+						break;
+					case "PENTECOST_OCTAVE":
+						return [getPentecost(year), dayOfDate(moveForwardDays(dateOfDay(getPentecost(year)), 7))];
+						break;
+					case "KINGDOM":
+						return [getKingdom(year), getLastDay(getAdventSunday(year + 1))];
+						break;
+					case "ALL":
+						return [getAdventSunday(year), dayOfDate(moveForwardDays(dateOfDay(getAdventSunday(year + 1)), -1))];
+					default:
+						alert("Email daniel@writefamily.com with season error the first.");
+						return "yikes bro";
+				}
+			}
+			
+			function isDayInSeason(day, season, year) {
+				let n = dateOfDay(day);
+				let bound = bounds(year, season);
+				
+				bound[0] = dateOfDay(bound[0]);
+				bound[1] = dateOfDay(bound[1]);
+				
+				return dateBetween(n, bound[0], bound[1]);
+			} // year cannot be deduced from the day alone, since the calendar year is not the liturgical year
+			
+			function seasonOfDay(day) {
+				let n = dateOfDay(day);
+				let year = day[2];
+				
+				if (isDayInSeason(day, "ADVENT", year)) {
+					return ["ADVENT", year];
+				} else if (isDayInSeason(day, "CHRISTMAS", year)) {
+					return ["CHRISTMAS", year];
+				} else if (isDayInSeason(day, "LENT", year)) {
+					return ["LENT", year];
+				} else if (isDayInSeason(day, "PASSION", year)) {
+					return ["PASSION", year];
+				} else if (isDayInSeason(day, "EASTER", year)) {
+					return ["EASTER", year];
+				} else if (isDayInSeason(day, "PENTECOST", year)) {
+					return ["PENTECOST", year];
+				} else if (isDayInSeason(day, "KINGDOM", year)) {
+					return ["KINGDOM", year];
+				} else if (isDayInSeason(day, "ADVENT", year + 1)) { // we must also check advent and christmas of the next liturgical year
+					return ["ADVENT", year + 1];
+				} else if (isDayInSeason(day, "CHRISTMAS", year + 1)) { // hence why the liturgical year is also returned
+					return ["CHRISTMAS", year + 1];
+				} else {
+					alert("Email daniel@writefamily.com with season error the second.");
+					return "yikes bro";
+				}
+			}
+			
+			function weekOfSeason(day) {
+				let seasonInfo = seasonOfDay(day);
+				let season = seasonInfo[0];
+				let year = seasonInfo[1];
+				let seasonStart = bounds(year ,season)[0];
+				
+				return (weeksBetween(dateOfDay(seasonStart), dateOfDay(day)) + 1).toLocaleString('en-US', {
+							minimumIntegerDigits: 2,
+							useGrouping: false
+						});
+			}
+			
+			function idDay(day, includeYear=true) {
+				let seasonInfo = seasonOfDay(day);
+				let season = seasonInfo[0];
+				let liturgicalYear = seasonInfo[1];
+				
+				let bound = bounds(liturgicalYear, season);
+				let seasonStart = dateOfDay(bound[0]);
+				let n = dateOfDay(day);
+				let weekStart = startOfWeek(n);
+				
+				if (seasonStart > weekStart) {
+					// count from season start
+					return season + "-" + weekOfSeason(day) + "-" + (daysBetween(seasonStart, n) + 1) + (includeYear? ":" + liturgicalYear : "");
+				} else {
+					// count from week start
+					return season + "-" + weekOfSeason(day) + "-" + (daysBetween(weekStart, n) + 1) + (includeYear? ":" + liturgicalYear : "");
+				}
+			}
+			
+			function dayFromId(id) {
+				let season = id.slice(0,2);
+				let week = id.slice(2,4) - 1;
+				let day = id.charAt(5) - 1;
+				let year = id.slice(7,id.length);
+				
+				let seasonStart;
+				switch (season) {
+					case "ADVENT":
+						seasonStart = getAdventSunday(year);
+						break;
+					case "CHRISTMAS":
+						seasonStart = getChristmas(year);
+						break;
+					case "LENT":
+						seasonStart = getLent(year);
+						break;
+					case "PASSION":
+						seasonStart = getPassion(year);
+						break;
+					case "EASTER":
+						seasonStart = getEaster(year);
+						break;
+					case "PENTECOST":
+						seasonStart = getPentecost(year);
+						break;
+					case "KINGDOM":
+						seasonStart = getKingdom(year);
+						break;
+				}
+				
+				if (week == 0) {
+					if (day == 0) {
+						return seasonStart;
+					} else {
+						return dayOfDate(moveForwardDays(dateOfDay(seasonStart), day));
+					}
+				} else {
+					return dayOfDate(moveForwardDays(dateOfDay(seasonStart), (7 * week) + day));
+				}
+			}
+			
+			/**
+					case "ADVENT":
+						break;
+					case "CHRISTMAS":
+						break;
+					case "LENT":
+						break;
+					case "PASSION":
+						break;
+					case "EASTER":
+						break;
+					case "PENTECOST":
+						break;
+					case "KINGDOM":
+						break;
+			*/
+		</script>
+		<script>
+			/**
+				Tables of Feasts
+			*/
+			
+			moveableFeasts = {
+				"AD03-4": "AD:EM:01",
+				"AD03-6": "AD:EM:02",
+				"AD03-7": "AD:EM:03",
+				// These dates can onl be calculated with the year known
+					// Holy Name
+					// Holy Family
+			//	"LE01-1": "",
+			//	"LE01-2": "Thursday after Ash Wednesday",
+			//	"LE01-3": "Friday after Ash Wednesday",
+			//	"LE01-4": "Saturday after Ash Wednesday",
+			//	"PA01-1": "Passion Sunday",
+			//	"PA02-1": "Palm Sunday",
+				"PA02-2": "PA:RG:01",
+				"PA02-3": "PA:RG:02",
+			//	"EA01-1": "Resurrection Sunday",
+			//	"EA02-1": "Divine Mercy Sunday",
+			//	"EA03-1": "Good Shepherd Sunday",
+				"EA04-4": "EA:JS:01",
+				"EA07-5": "EA:AC:01",
+			//	"PE01-1": "Pentecost",
+				"PE01-2": "PE:VM:01",
+				"PE01-4": "PE:EM:01",
+				"PE01-6": "PE:EM:02",
+				"PE01-7": "PE:EM:03",
+			//	"PE02-1": "Sunday of the Most Holy Trinity",
+				"PE02-5": "PE:BB:01",
+				"PE03-6": "PE:HH:01",
+				"PE03-7": "PE:HH:02",
+			//	"KI01-1": "Jesus Christ the King of the Universe"
+				// Kingdomtide Embers occur on the last Wednesday, Friday, and Saturday of the season, and can only be caluclated with the year known.
+			};			
+		</script>
 		
-		console.log(dateOf(today));
-		todaydate = dateOf(today);
-		let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(todaydate);
-		let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(todaydate);
-		let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(todaydate);
+		<script src="yaml.js"></script>
 		
-		checkAllDates(today[2]);
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- unfortunately necessary -->
+	</head>
+	<body>
+		<div id = "rule">
+			<div class="section">
+				<h1 id = "dateline"></h1>
+				<h2 id = "timeline"></h2>
+			</div>
+			<div class="section" id="exhortations">
+				<h2>Exhortation</h2>
+				<p class="instruction">At the beginning, the leader shall read with a loud voice these psalms and prayers. If the leader is a cleric, he shall stand in front of the people; otherwise, he shall stand in their midst. The people stand as he begins the first verse, and remaing standing until the Rite of Contrition.</p>
+				<div class="section" >
+					<p class="verse" id ="exhortation_verse"></p>
+					<p id="exhortation"></p>
+				</div>
+				<div class="section">
+					<p class="verse" id ="call_verse"></p>
+					<p id="call"></p>
+				</div>
+			</div>
+			<div class = "section" id="invitatory">
+				<h2>Invitatory</h2>
+				<p>In the Name of the Father, and of the Son, and of the Holy Spirit:</p>
+				<p>V. O Lord, open Thou my lips.<br/>
+				R. And my mouth shall declare Thy praise.<br/>
+				V. O God, come to my assistance.<br/>
+				R. O Lord, make haste to help me.<br/>
+				V. By the sign of His Holy Cross:<br/>
+				R. Our God delivered us.<br/>
+				V. Glory be to the Father, and to the Son, and to the Holy Spirit.<br/>
+				R. As it was in the beginning shall now and ever be, unto the age of ages.</p>
+				<p>Amen.</p>
+			</div>
+			<div class="section">
+				<h2>Sapiental</h2>
+				<p class = "verse" id="sapiental_verse"></p>
+				<p id="sapiental"></p>
+			</div>
+			<div class="section">
+				<h2>Ectenia</h2>
+				<p class="instruction">The people recite with the leader this prayer, unless it is a responsory, to which then they only give the responses.</p>
+				<p class = "verse" id="ectenia_verse"></p>
+				<p id="ectenia"></p>
+			</div>
+			<div class="section">
+				<h2>Gradual</h2>
+				<p class = "verse" id="gradual_verse"></p>
+				<p id="gradual"></p>
+			</div>
+			<div class = "section" id="contrition">
+				<h2>Rite of Contrition</h2>
+				<p class="instruction">All now kneel, as the leader opens the Lord's Prayer and the people give its conclusion.</p>
+				<div class="section">
+					<h3>Lord's Prayer</h3>
+					<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
+					R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
+				</div>
+				<div class="section">
+					<h3>Examination of Conscience</h3>
+					<p class="instruction">The examination is silently recited, as all study their conscience according to the words.</p>
+					<p>Forgive me my sins, O Lord, forgive me my sins: the sins of my age, the sins of my youth; the sins of my soul, the sins of my body; my idle sins, my willed sins; the sins I know, the sins I do not know, and the sins I have concealed for so long and are now hidden from my memory.</p>
+					
+					<p class="instruction">The leader then recites the following preface to the Confiteor.</p>
+					<p>O Lord, Almighty and Eternal God, we have errored and strayed from Thy ways like lost sheep. We have followed the devices and desires of our own hearts. We have offended against Thy holy laws. We have left undone those things we ought to have done, and done those things we ought to have left undone. But Thou, O Lord, desires not the death of the sinner, but his life: a contrite and sorrowful heart Thou will never despise. Thus we pray:</p>
+				</div>
+				<div class="section">
+					<h3>Confiteor</h3>
+					<p class="instruction">The people recite the Confiteor with the leader.</p>
+					<p>I confess to almighty God, to blessed Mary ever-Virgin, to blessed Michael the Archangel, to blessed John the Baptist, to the holy Apostles Peter and Paul, and to all the Saints: I have greatly sinned in thought, word, and deed: through my fault, through my fault, through my most grievous fault. Therefore I beseech blessed Mary ever-Virgin, blessed Michael the Archangel, blessed John the Baptist, the holy Apostles Peter and Paul, and all the Saints to pray for me to the Lord our God.</p>
+					<p>V. May almighty God have mercy on us, forgive us our sins, and bring us to everlasting life.<br/>R. Amen.</p>
+					<p>V. May the almighty and merciful Lord grant us pardon, absolution, and remission of our sins.<br/>R. Amen.</p>
+				</div>
+				<div class="section">
+					<h3>Doxology</h3>
+					<p>Deliver us, we beseech Thee O Lord, from all evils past, present, and to come, and by the intercession of the blessed and glorious ever-Virgin Mary, Mother of God, together with blessed Michael the Archangel, blessed John the Baptist, Thy holy Apostles Peter and Paul, and with all Thy Saints, mercifully grant peace in our days, that through the bounteous help of Thy mercy we may be always free from sin and safe from all disquiet. Through Jesus Christ our Lord Thy Son, Who lives and reigns with Thee in the unity of the Holy Spirit unto the age of ages.<br/>R. Amen.</p>
+				</div>
+			</div>
+			<div class = "section" id = "martyrology">
+				<h2>Martyrology</h2>
+				<p class="instruction">All continue to kneel as the roll of martyrs is pronounced by the leader.</p>
+				<p id = "martyrline"></p>
+				<ul id = "martyrs">
+					<li id = "final_martyr">And elsewhere many other holy martyrs, confessors, and holy virgins.</p>
+				</ul>
+				<p>V. Precious in the sight of the Lord is the death of His Saints.<br/>
+				R. Holy Mary and all the Saints, intercede for us with the Lord our God, so that we may merit His help and salvation. Amen.</p>
+			</div>
+			<div class="section">
+				<h2>Lesson</h2>
+				<p class="instruction">All but the leader may now sit, but it is proper to stand for readings from the holy Gospels according to his instruction.</p>
+				<div class="section">
+					<h3>Incipit</h3>
+					<p class = "verse" id="incipit_verse"></p>
+					<p id="incipit"></p>
+				</div>
+				<div class="section">
+					<h3>Collect</h3>
+					<div class="section">
+						<p class = "verse" id="collect1_verse"></p>
+						<p id="collect1"></p>
+						<p id="collect1_antiphons"></p>
+					</div>
+					<div class="section">
+						<p class = "verse" id="collect2_verse"></p>
+						<p id="collect2"></p>
+						<p id="collect2_antiphons"></p>
+					</div>
+					<div class="section">
+						<p class = "verse" id="collect3_verse"></p>
+						<p id="collect3"></p>
+						<p id="collect3_antiphons"></p>
+					</div>
+					<div class="section">
+						<p class = "instruction">The Oration of the Collect is the true proper prayer of the day and accordingly uniquely expressive of the liturgical day.</p>
+						<p class = "verse">Oration of the Sunday or Solemnity</p>
+						<p id = "oration"></p>
+						<p class = "instruction">After having recited the Oration, the leader pauses so that the significance of the prayer may be contemplated by the people.</p>
+					</div>
+				</div>
+				<div class="section">
+					<h3>Canticle</h3>
+					<p class = "verse" id="canticle_verse"></p>
+					<p id="canticle"></p>
+				</div>
+				<div class="section">
+					<h3>First Reading</h3>
+					<div class="section">
+						<p class = "verse" id="reading1_verse"></p>
+						<p id="reading1"></p>
+						<p>R. Glory be to the Father, and to the Son, and to the Holy Spirit. Amen.</p>
+					</div>
+					<h3>Second Reading</h3>
+					<div class="section">
+						<p class = "verse" id="reading2_verse"></p>
+						<p id="reading2"></p>
+						<p>R. Glory be to the Father, and to the Son, and to the Holy Spirit. Amen.</p>
+					</div>
+					<h3>Third Reading</h3>
+					<div class="section">
+							<p class = "verse" id="reading2_verse"></p>
+							<p id="reading2"></p>
+					</div>
+				</div>
+			</div>
+			<div class="section" id = "intercessions">
+				<h2>Evening Intercessions</h2>
+					<p class="instruction">All now kneel again.</p>
+					<div class = "section">
+						<h3>For the Intentions of the Pope</h3>
+						<p>The Most Holy Father Francis has instructed us during this month of <span id = "monthline"></span> in the <span id = "yearline"></span> year of our Lord to pray for <span id = "intentionline"></span> that <span id= "prayerline"></span>. Let us pray:</p>
+						
+						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
+						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
+						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
+					</div>
+					<p class = "instruction">To the remainder of these petitions, the people give the response "Lord, hear our prayer."</p>
+					<div class="section">
+						<h3>For the Holy Church</h3>
+						<p>Almighty and everlasting God, Who in our Christ has revealed Thy glory to all nations, we beseech Thee to guard Thy Church, to keep Her in peace and unity, and to subject all powers and principalities to Her authority, that Thy Church spread throughout the world may preserve unencumbered in the confession of Thy Name and of Thy great works. Lord, hear our prayer.</p>
+					</div>
+					<div class="section">
+						<h3>For the Supreme Pontiff</h3>
+						<p>Almighty and everlasting God, by Whose judgment all things are established, mercifully regard the prayers of Thy people, and in Thy goodness especially hear the prayers of our Most Holy Father Francis, for his own intentions, and for the whole world of Thy Creation to be united under his authority in perfect obedience to Thee. Lord, hear our prayer.</p>
+					</div>
+					<div class="section">
+						<h3>For all Orders and Grades of the Faithful</h3>
+						<p>Almighty and everlasting God, by Whose Spirit the whole congregation of the Church is sanctified, hear our humble plea for all orders: for all bishops, priests, deacons, confessors, virgins, and all the holy people of God; that by the gift of Thy grace all may faithfully serve Thee. Lord, hear our prayer.</p>
+					</div>
+					<div class="section">
+						<h3>For the Leaders of the Lands</h3>
+						<p>Almighty and everlasting God, in Whose hands dwell all power, grant Thy grace unto those who wield power over us, and let Thy right hand protect us, that the integrity of Thy Church may be firmly based. Lord, hear our prayer.</p>
+					</div>
+					<div class="section">
+						<h3>For Catechumens</h3>
+						<p>Almighty and everlasting God, Who ever makes Thy Church fruitful with new offspring, increase the faith and understanding of our catechumens, and all those raised by Christian parents, that being born from the font of baptism, they may worthily be called Thy children. Lord, hear our prayer.</p>
+					</div>
+				<div class="section">
+					<h3>For the Needs of the Faithful</h3>
+					<p>Almighty and everlasting God, the comfort of all the afflicted and sorrowful, and the strength of those who labor: hasten the prayers of all those who call upon Thee in trouble, that all may rejoice in their necessities Thy mercy has given them, that Thou would cleanse the world of all errors: take away disease, drive away famine, open prisons, break chains, and grant safe return to travelers and health to the sick. Lord, hear our prayer.</p>
+				</div>
+				<div class="section">
+					<h3>For the Unity of the Church</h3>
+					<p>Almighty and everlasting God, Who saves all men, and wills that no man perish, look upon the souls led astray by the deceit of the Devil, that having set aside all heretical evil, their hearts may repent of their errors, and return to the unity of Thy truth in our holy Mother and Teacher, Thy Church. Lord, hear our prayer.</p>
+				</div>
+				<div class="section">
+					<h3>For the Conversion of Jews</h3>
+					<p>Almighty and everlasting God, Who wishes all men to be saved, illuminate the hearts of the Jews, that they may acknowledge Thy Son as their awaited Savior. Lord, hear our prayer.</p>
+				</div>
+				<div class="section">
+					<h3>For the Conversion of Unbelievers</h3>
+					<p>Almighty and everlasting God, Who seeks not the death of sinners, but their life, mercifully grant unto those who have not heard Thy Name and who do not know Thy great works the grace to renounce their false idols and to repent of their sins, and to convert to the true God. Lord, hear our prayer.</p>
+				</div>
+			</div>
+			<div class = "section">
+				<h2>Dismisal</h2>
+				<p class="verse">Deuteronomy 6:4-7</p>
+				<p>Hear, Israel: the Lord is our God and the Lord alone. And thou shall love the Lord thy God with all thy heart and with all thy being and with all thy might. And these words that I charge thee tody shall be upon thy heart. And thou shall impress them unto thy sons and speak of them when thou sits in thy house and when thou goes on the way and when thou lies down and when thou rises.</p>
+			</div>
+			<div class="section">
+				<h2>Divine Praises</h2>
+				<p class="instruction">If the people are not already kneeling, they do so now.</p>
+				<p>Blessed be God. Blessed be His Holy Name. Blessed be Jesus Christ, true God and true Man. Blessed be the Name of Jesus. Blessed be His Most Sacred Heart. Blessed be His Most Precious Blood. Blessed be Jesus in the Most Holy Sacrament. Blessed be the Holy Spirit. Blessed be the great Mother of God, Mary most Holy. Blessed be her Holy and Immaculate Conception. Blessed be her Glorious Assumption. Blessed be the name of Mary, Virgin and Mother. Blessed be Saint Joseph, her most chaste Spouse. Blessed be God in His Angels and in His Saints. Amen.</p>
+			</div>
+		</div>
+		<script>
 		
-		var color;
-		switch (getSeasonForDate(dateOf(today))) {
-			case "ADVENT":
-				color="#E75480";
-				var tag = document.createElement("style");
-				tag.innerHTML="h1,h2,h3,h4 { color:"+color+"; }";
-				document.head.appendChild(tag);
-				break;
-			case "CHRISTMAS":
-				color="blue";
-				var tag = document.createElement("style");
-				tag.innerHTML="h1,h2,h3,h4 { color:"+color+"; }";
-				document.head.appendChild(tag);
-				break;
-			case "LENT":
-				color="purple";
-				var tag = document.createElement("style");
-				tag.innerHTML="h1,h2,h3,h4 { color:"+color+"; }";
-				document.head.appendChild(tag);
-				break;
-			case "PASSION":
-				color="black";
-				var tag = document.createElement("style");
-				tag.innerHTML="h1,h2,h3,h4 { color:"+color+"; }";
-				document.head.appendChild(tag);
-				break;
-			case "EASTER":
-				color="white";
-				var tag = document.createElement("style");
-				tag.innerHTML="h1,h2,h3,h4 { color:"+color+"; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }";
-				document.head.appendChild(tag);
-				break;
-			case "PENTECOST":
-				color="green";
-				var tag = document.createElement("style");
-				tag.innerHTML="h1,h2,h3,h4 { color:"+color+"; }";
-				document.head.appendChild(tag);
-				break;
-			case "KINGDOM":
-				color="#a17f1a";
-				var tag = document.createElement("style");
-				tag.innerHTML="h1,h2,h3,h4 { color:"+color+"; }";
-				document.head.appendChild(tag);
-				break;
-		}
-	</script>
+			/** 
+				Network Functions
+			*/
+			
+			function getYaml(url, callback) {
+				url = "file:///C:/Users/sn/OneDrive/Documents/EF%20Mass%20Prayers/Divinum%20Officum/improved_webapp/" + url;
+				jQuery.get(url, function(data) {
+					console.log(url+": " + data);
+					callback(YAML.parse(data));
+				});
+			}
+			
+			/**
+				Application Logic
+			*/
+			
+			
+			
+			todayDate = new Date(); 
+			todayDay = dayOfDate(todayDate);
+			
+			document.title = idDay(todayDay);
+			
+			getYaml("calendar.yml", function(data) {
+				alert(data);
+			});
+		</script>
+	</body>
 </html>
