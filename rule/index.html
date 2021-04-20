@@ -3,7 +3,7 @@
 	<head>
 		<style>
 			#rule {
-				width: 11in;
+				width: 8in;
 				margin: 1in 1in 1in 1in;
 			}
 			
@@ -43,7 +43,7 @@
 			}
 
 			li {
-				list-style-type: "â€” ";
+				list-style-type: "— ";
 			}
 		</style>
 		<script>
@@ -569,22 +569,23 @@
 					<p id="canticle"></p>
 				</div>
 				<div class="section">
-					<h3>First Reading</h3>
+					<h3>Office of Readings</h3>
 					<div class="section">
+						<h4>First Reading</h4>
 						<p class = "verse" id="reading1_verse"></p>
 						<p id="reading1"></p>
 						<p>R. Glory be to the Father, and to the Son, and to the Holy Spirit. Amen.</p>
 					</div>
-					<h3>Second Reading</h3>
 					<div class="section">
+						<h4>Second Reading</h4>
 						<p class = "verse" id="reading2_verse"></p>
 						<p id="reading2"></p>
 						<p>R. Glory be to the Father, and to the Son, and to the Holy Spirit. Amen.</p>
 					</div>
-					<h3>Third Reading</h3>
 					<div class="section">
-							<p class = "verse" id="reading2_verse"></p>
-							<p id="reading2"></p>
+						<h4>Third Reading</h4>
+						<p class = "verse" id="reading3_verse"></p>
+						<p id="reading3"></p>
 					</div>
 				</div>
 			</div>
@@ -593,7 +594,7 @@
 					<p class="instruction">All now kneel again.</p>
 					<div class = "section">
 						<h3>For the Intentions of the Pope</h3>
-						<p>The Most Holy Father Francis has instructed us during this month of <span id = "monthline"></span> in the <span id = "yearline"></span> year of our Lord to pray for <span id = "intentionline"></span> that <span id= "prayerline"></span>. Let us pray:</p>
+						<p>The Most Holy Father Francis has instructed us during this month of <span id = "monthline"></span> in the <span id = "yearline"></span> year of our Lord to pray for <span id = "intentionline"></span>: that <span id= "prayerline"></span>. Let us pray:</p>
 						
 						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
 						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
@@ -634,13 +635,15 @@
 				</div>
 				<div class="section">
 					<h3>For the Conversion of Unbelievers</h3>
-					<p>Almighty and everlasting God, Who seeks not the death of sinners, but their life, mercifully grant unto those who have not heard Thy Name and who do not know Thy great works the grace to renounce their false idols and to repent of their sins, and to convert to the true God. Lord, hear our prayer.</p>
+					<p>Almighty and everlasting God, Who seeks not the death of sinners, but their life, mercifully grant unto those who have not heard Thy Name and who do not know Thy great works the grace to renounce their false idols, to repent of their sins, and to convert to the true God. Lord, hear our prayer.</p>
 				</div>
 			</div>
 			<div class = "section">
-				<h2>Dismisal</h2>
+				<h2>Dismissal</h2>
+				<p class="verse" id="dismisal_verse"></p>
+				<p id="dismisal"></p>
 				<p class="verse">Deuteronomy 6:4-7</p>
-				<p>Hear, Israel: the Lord is our God and the Lord alone. And thou shall love the Lord thy God with all thy heart and with all thy being and with all thy might. And these words that I charge thee tody shall be upon thy heart. And thou shall impress them unto thy sons and speak of them when thou sits in thy house and when thou goes on the way and when thou lies down and when thou rises.</p>
+				<p>Hear, Israel: the Lord is our God and the Lord alone. And thou shall love the Lord thy God with all thy heart and with all thy being and with all thy might. And these words that I charge thee today with shall be upon thy heart. And thou shall impress them unto thy sons and speak of them when thou sits in thy house and when thou goes on the way and when thou lies down and when thou rises.</p>
 			</div>
 			<div class="section">
 				<h2>Divine Praises</h2>
@@ -657,24 +660,101 @@
 			function getYaml(url, callback) {
 				url = "http://daniel.writefamily.com/rule/" + url;
 				jQuery.get(url, function(data) {
-					console.log(url+": " + data);
 					callback(YAML.parse(data));
 				});
+			}
+			
+			/**
+				Reading Functions
+			*/
+			
+			function getNewlineReplacement(text) { 
+				text = text.replaceAll("  ", "&emsp;");
+				console.log(text);
+				if (text.includes("&emsp;")) {
+					text = text.replaceAll("\n","<br/>");
+				} else {
+					text = text.replaceAll("\n","<p>");
+				}
+				
+				return text.replaceAll("	", "&emsp;") + "<hr/>";
 			}
 			
 			/**
 				Application Logic
 			*/
 			
-			
+			monthTable = [
+				"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+			]
 			
 			todayDate = new Date(); 
 			todayDay = dayOfDate(todayDate);
 			
-			document.title = idDay(todayDay);
+			let hour = todayDate.getHours();
+			
+			var urlParams = new URLSearchParams(window.location.search);
+			if (urlParams.has("year")) todayDay[2] = Number(urlParams.get("year"));
+			if (urlParams.has("year")) todayDay[2] = Number(urlParams.get("year"));
+			if (urlParams.has("month")) todayDay[0] = Number(urlParams.get("month"));
+			if (urlParams.has("day")) todayDay[1] = Number(urlParams.get("day"));
+			if (urlParams.has("hour")) hour = Number(urlParams.get("hour"));
+			
+			let morning = hour < 15;
+			document.getElementById("timeline").innerHTML = morning? "Morning Prayer" : "Evening Prayer";
+			
+			todayDate = dateOfDay(todayDay);
+			
+			let year = todayDate.getYear();
+			let month = todayDate.getMonth() + 1;
+			let day = todayDate.getDate();
+			
+			let dayId = idDay(todayDay).split(":")[0];
+			document.title = idDay(todayDay).split(":")[0];
 			
 			getYaml("calendar.yml", function(data) {
-				alert(data);
+				let intention = data.pope[month - 1][0];
+				let prayer = data.pope[month - 1][1];
+				document.getElementById("intentionline").innerHTML = intention;
+				document.getElementById("prayerline").innerHTML = prayer;
+				document.getElementById("monthline").innerHTML = monthTable[month - 1];
+
+				document.getElementById("dismissal_verse").innerHTML = data.dismissal[todayDate.getDay()];
+			});
+			
+			let dayIdParts = dayId.split("-");
+			getYaml("calendar/" + dayIdParts[0].toLowerCase() + "/" + dayIdParts[1] + "/" + dayIdParts[2] + ".yml", function(data){
+				console.log(data);
+				document.getElementById("dateline").innerHTML = data.name;
+				
+				let office = morning? "morning" : "evening";
+				document.getElementById("reading1_verse").innerHTML = data[office].readings[0].verse;
+				document.getElementById("reading2_verse").innerHTML = data[office].readings[1].verse;
+				document.getElementById("reading3_verse").innerHTML = data[office].readings[2].verse.replaceAll("\n","<br/>");
+				
+				document.getElementById("reading1").innerHTML = getNewlineReplacement(data[office].readings[0].text);
+				document.getElementById("reading2").innerHTML = getNewlineReplacement(data[office].readings[1].text);
+				document.getElementById("reading3").innerHTML = getNewlineReplacement(data[office].readings[2].text);
+				
+				let fromWeek = {};
+				if ("collect" in data) {
+					
+				} else {
+					fromWeek["collect"] = true;
+				}
+				
+				if ("oration" in data) {
+				
+				} else {
+					fromWeek["oration"] = true;
+				}
+				if ("ectenia" in data) {
+					
+				} else {
+					fromWeek["ectenia"] = true;
+				}
+				
+				console.log(fromWeek);
 			});
 		</script>
 	</body>
