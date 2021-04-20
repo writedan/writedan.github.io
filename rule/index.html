@@ -655,7 +655,7 @@
 			*/
 			
 			function getYaml(url, callback) {
-				url = "http://daniel.writefamily.com/" + url;
+				url = "http://daniel.writefamily.com/rule/" + url;
 				jQuery.get(url, function(data) {
 					console.log(url+": " + data);
 					callback(YAML.parse(data));
