@@ -120,7 +120,6 @@ psalms: # The Office of Psalms
       call: 115
       gradual: 122
       sapiental: 46
-      sapiental: 46
     evening:
       exhortation: 119:153-160
       call: 24
