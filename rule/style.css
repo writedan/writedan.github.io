@@ -43,8 +43,8 @@ br {
 	margin-bottom: 0.5vh;
 }
 
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: lightblue;
+@media only screen and (min-width: 800px) {
+  #rule {
+	font-size: 1.75vh;
   }
 }
