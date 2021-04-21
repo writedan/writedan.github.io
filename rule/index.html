@@ -9,13 +9,13 @@
 			}
 			
 			.section {
-				border: 1px solid;
-				margin: 15px;
-				padding: 20px;
+				//border: 1px solid;
+				//margin: 15px;
+				//padding: 20px;
 			}
 			
 			.section .section {
-				border: 1px dotted;
+				//border: 1px dotted;
 			}
 			
 			.section .section .section {
@@ -47,7 +47,14 @@
 				#rule {
 					width: 100%;
 					font-family: 'IM Fell DW Pica', serif;
-					font-size: 2vmin;
+					font-size: 5vmax;
+				}
+			}
+			
+			@media only screen and (min-width: 800px) {
+				#rule {
+					column-count: 2;
+					width: 100%;
 				}
 			}
 			
