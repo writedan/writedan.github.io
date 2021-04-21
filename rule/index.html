@@ -3,15 +3,15 @@
 	<head>
 		<style>
 			#rule {
-				width: 8in;
+				width: 100%;
+				padding: 2vw;
 				font-family: 'IM Fell DW Pica', serif;
 				font-size: 1.5vmin;
 			}
 			
 			.section {
 				//border: 1px solid;
-				//margin: 15px;
-				//padding: 20px;
+				margin: 15px;
 			}
 			
 			.section .section {
@@ -43,19 +43,9 @@
 				list-style-type: "— ";
 			}
 			
-			@media only screen and (max-width: 500px) {
-				#rule {
-					width: 100%;
-					font-family: 'IM Fell DW Pica', serif;
-					font-size: 5vmax;
-					column-count: 1;
-				}
-			}
-			
 			@media only screen and (min-width: 800px) {
 				#rule {
 					column-count: 2;
-					width: 100%;
 				}
 			}
 			
@@ -471,14 +461,12 @@
 			</div>
 			<div class="section" id="exhortations">
 				<h2>Office of Psalms</h2>
-				<div class = "section">
-					<div class="section" >
-						<h3>Exhortation</h3>
-						<p class="instruction">At the beginning, the leader shall read with a loud voice these psalms and prayers. If the leader is a cleric, he shall stand in front of the people; otherwise, he shall stand in their midst. The people stand as he begins the first verse, and remaing standing until the Rite of Contrition.</p>
-						<p class="verse" id ="exhortation_verse"></p>
-						<p id="exhortation"></p>
-						<p>R. Thanks be to God.</p>
-					</div>
+				<div class="section" >
+					<h3>Exhortation</h3>
+					<p class="instruction">At the beginning, the leader shall read with a loud voice these psalms and prayers. If the leader is a cleric, he shall stand in front of the people; otherwise, he shall stand in their midst. The people stand as he begins the first verse, and remaing standing until the Rite of Contrition.</p>
+					<p class="verse" id ="exhortation_verse"></p>
+					<p id="exhortation"></p>
+					<p>R. Thanks be to God.</p>
 				</div>
 				<div class = "section" id="invitatory">
 					<h3>Invitatory</h3>
