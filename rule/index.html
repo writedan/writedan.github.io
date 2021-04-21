@@ -9,10 +9,13 @@
 				font-size: 1.5vmax;
 			}
 			
+			.section {
+				//border: 1px solid;
 				margin: 15px;
 			}
 			
 			.section .section {
+				//border: 1px dotted;
 			}
 			
 			.section .section .section {
@@ -42,7 +45,7 @@
 			
 			@media only screen and (min-width: 800px) {
 				#rule {
-					column-count: 2;
+					column-count: 1;
 					width: 100%;
 					padding: 2vw;
 					font-family: 'IM Fell DW Pica', serif;
@@ -54,6 +57,16 @@
 				#rule {
 					column-count: 1;
 					width: 100%;
+					padding: 2vw;
+					font-family: 'IM Fell DW Pica', serif;
+					font-size: 10vmax;
+				}
+			}
+			
+			@media only printer {
+				#rule {
+					column-count: 1;
+					width: 8in;
 					padding: 2vw;
 					font-family: 'IM Fell DW Pica', serif;
 					font-size: 5vmax;
