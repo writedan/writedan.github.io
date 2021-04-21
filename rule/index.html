@@ -679,16 +679,28 @@
 				return text.replaceAll("	", "&emsp;") + "<hr/>";
 			}
 			
-			function getPsalm(num, callback, start=0, end=1000) {
+			function getPsalm(num, callback, start=1, end=1000) {
 				getYaml("psalter/" + num + ".yml", function(psalm){
 					let text = "";
 					let len = Math.min(end, psalm.verses.length);
+					if (isNaN(end)) len = start;
 					for (let i = start - 1; i < len; i++) {
+						console.log(i);
 						text = text + psalm.verses[i].text;
 					}
 					
 					callback(text);
 				});
+			}
+			
+			function getPsalmFromVerse(verse, callback) {
+				let chapter = Number(verse.split(":")[0]);
+				let start = Number(verse.split(":")[1].split("-")[0]);
+				let end = Number(verse.split(":")[1].split("-")[1]);
+				console.log("Psalm " + chapter + ":" + start + "-" + end);
+				getPsalm(chapter, function(psalm){
+					callback(psalm);
+				}, start, end);
 			}
 			
 			/**
@@ -723,6 +735,7 @@
 			let year = todayDate.getYear();
 			let month = todayDate.getMonth() + 1;
 			let day = todayDate.getDate();
+			let dayOfWeek = todayDate.getDay();
 			
 			let dayId = idDay(todayDay).split(":")[0];
 			document.title = idDay(todayDay).split(":")[0];
@@ -736,6 +749,19 @@
 
 				document.getElementById("dismisal_verse").innerHTML = data.dismissal[todayDate.getDay()].verse;
 				document.getElementById("dismisal").innerHTML = data.dismissal[todayDate.getDay()].text;
+				
+				let office = morning? "morning" : "evening";
+				let f = function(id, psalm){
+					document.getElementById(id).innerHTML = getNewlineReplacement(psalm);
+				};
+				
+				for (verse in data.psalms[dayOfWeek][office]) {
+					let v = data.psalms[dayOfWeek][office][verse];
+					document.getElementById(verse + "_verse").innerHTML = v;
+					getPsalmFromVerse(v, function(text){
+						f(v, text);
+					});
+				}
 			});
 			
 			let dayIdParts = dayId.split("-");
