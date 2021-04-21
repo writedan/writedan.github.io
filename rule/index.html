@@ -3,7 +3,7 @@
 	<head>
 		<style>
 			#rule {
-				width: 8in;
+				width: 100%;
 			}
 			
 			p {
@@ -452,49 +452,47 @@
 				<h2 id = "timeline"></h2>
 			</div>
 			<div class="section" id="exhortations">
-				<h2>Exhortation</h2>
-				<p class="instruction">At the beginning, the leader shall read with a loud voice these psalms and prayers. If the leader is a cleric, he shall stand in front of the people; otherwise, he shall stand in their midst. The people stand as he begins the first verse, and remaing standing until the Rite of Contrition.</p>
-				<div class="section" >
-					<p class="verse" id ="exhortation_verse"></p>
-					<p id="exhortation"></p>
-					<p>R. Thanks be to God.</p>
+				<h2>Office of Psalms</h2>
+				<div class = "section">
+					<div class="section" >
+						<h3>Exhortation</h3>
+						<p class="instruction">At the beginning, the leader shall read with a loud voice these psalms and prayers. If the leader is a cleric, he shall stand in front of the people; otherwise, he shall stand in their midst. The people stand as he begins the first verse, and remaing standing until the Rite of Contrition.</p>
+						<p class="verse" id ="exhortation_verse"></p>
+						<p id="exhortation"></p>
+						<p>R. Thanks be to God.</p>
+					</div>
+				</div>
+				<div class = "section" id="invitatory">
+					<h3>Invitatory</h3>
+					<p>In the Name of the Father, and of the Son, and of the Holy Spirit:</p>
+					<p>V. O Lord, open Thou my lips.<br/>
+					R. And my mouth shall declare Thy praise.<br/>
+					V. O God, come to my assistance.<br/>
+					R. O Lord, make haste to help me.<br/>
+					V. By the sign of His Holy Cross:<br/>
+					R. Our God delivered us.<br/>
+					V. Glory be to the Father, and to the Son, and to the Holy Spirit.<br/>
+					R. As it was in the beginning shall now and ever be, unto the age of ages.</p>
+					<p>Amen.</p>
 				</div>
 				<div class="section">
+					<h3>Call</h3>
 					<p class="verse" id ="call_verse"></p>
 					<p id="call"></p>
 					<p>R. Lord, have mercy upon us.</p>
 				</div>
-			</div>
-			<div class = "section" id="invitatory">
-				<h2>Invitatory</h2>
-				<p>In the Name of the Father, and of the Son, and of the Holy Spirit:</p>
-				<p>V. O Lord, open Thou my lips.<br/>
-				R. And my mouth shall declare Thy praise.<br/>
-				V. O God, come to my assistance.<br/>
-				R. O Lord, make haste to help me.<br/>
-				V. By the sign of His Holy Cross:<br/>
-				R. Our God delivered us.<br/>
-				V. Glory be to the Father, and to the Son, and to the Holy Spirit.<br/>
-				R. As it was in the beginning shall now and ever be, unto the age of ages.</p>
-				<p>Amen.</p>
-			</div>
-			<div class="section">
-				<h2>Sapiental</h2>
-				<p class = "verse" id="sapiental_verse"></p>
-				<p id="sapiental"></p>
-				<p>R. Christ, have mercy upon us.</p>
-			</div>
-			<div class="section">
-				<h2>Ectenia</h2>
-				<p class="instruction">The people recite with the leader this prayer, unless it is a responsory, to which then they only give the responses.</p>
-				<p class = "verse" id="ectenia_verse"></p>
-				<p id="ectenia"></p>
-			</div>
-			<div class="section">
-				<h2>Gradual</h2>
-				<p class = "verse" id="gradual_verse"></p>
-				<p id="gradual"></p>
-				<p>R. Lord, have mercy upon us.</p>
+				<div class="section">
+					<h3>Sapiental</h3>
+					<p class = "verse" id="sapiental_verse"></p>
+					<p id="sapiental"></p>
+					<p>R. Christ, have mercy upon us.</p>
+				</div>
+				<div class="section">
+					<h3>Gradual</h3>
+					<p class = "verse" id="gradual_verse"></p>
+					<p id="gradual"></p>
+					<p>R. Lord, have mercy upon us.</p>
+				</div>
 			</div>
 			<div class = "section" id="contrition">
 				<h2>Rite of Contrition</h2>
@@ -524,55 +522,60 @@
 					<p>Deliver us, we beseech Thee O Lord, from all evils past, present, and to come, and by the intercession of the blessed and glorious ever-Virgin Mary, Mother of God, together with blessed Michael the Archangel, blessed John the Baptist, Thy holy Apostles Peter and Paul, and with all Thy Saints, mercifully grant peace in our days, that through the bounteous help of Thy mercy we may be always free from sin and safe from all disquiet. Through Jesus Christ our Lord Thy Son, Who lives and reigns with Thee in the unity of the Holy Spirit unto the age of ages.<br/>R. Amen.</p>
 				</div>
 			</div>
-			<div class = "section" id = "martyrology">
-				<h2>Martyrology</h2>
-				<p class="instruction">All continue to kneel as the roll of martyrs is pronounced by the leader.</p>
-				<p id = "martyrline"></p>
-				<ul id = "martyrs">
-					<li id = "final_martyr">And elsewhere many other holy martyrs, confessors, and holy virgins.</p>
-				</ul>
-				<p>V. Precious in the sight of the Lord is the death of His Saints.<br/>
-				R. Holy Mary and all the Saints, intercede for us with the Lord our God, so that we may merit His help and salvation. Amen.</p>
-			</div>
 			<div class="section">
-				<h2>Lesson</h2>
+				<h2>Office of Readings</h2>
 				<p class="instruction">All but the leader may now sit, but it is proper to stand for readings from the holy Gospels according to his instruction.</p>
 				<div class="section">
-					<h3>Incipit</h3>
-					<p class = "verse" id="incipit_verse"></p>
-					<p id="incipit"></p>
-				</div>
-				<div class="section">
-					<p class = "instruction">The Oration of the Collect is the true proper prayer of the day and accordingly uniquely expressive of the liturgical day.</p>
-					<h3>Collect</h3>
-					<p><span id = "oration"></span></p>
-					<p class = "instruction">After having recited the Oration, the leader pauses so that the significance of the prayer may be contemplated by the people.</p>
-				</div>
-				<div class="section">
-					<h3>Lesser Office of Readings</h3>
+					<h3>First Lesson</h3>
 					<div class="section">
+						<h4>Incipit</h4>
+						<p class = "verse" id="incipit_verse"></p>
+						<p id="incipit"></p>
+					</div>
+					<div class="section">
+						<p class = "instruction">The Oration of the Collect is the true proper prayer of the day and accordingly uniquely expressive of the liturgical day.</p>
+						<h4>Collect</h4>
+						<p><span id = "oration"></span></p>
+						<p class = "instruction">After having recited the Oration, the leader pauses so that the significance of the prayer may be contemplated by the people.</p>
+					</div>
+				</div>
+				<div class="section">
+					<h3>Second Lesson</h3>
+					<div class="section">
+						<h4>First Reading</h4>
 						<p class = "verse" id="collect1_verse"></p>
 						<p id="collect1"></p>
 						<p id="collect1_antiphons"></p>
 					</div>
 					<div class="section">
+						<h4>Second Reading</h4>
 						<p class = "verse" id="collect2_verse"></p>
 						<p id="collect2"></p>
 						<p id="collect2_antiphons"></p>
 					</div>
 					<div class="section">
+						<h4>Third Reading</h4>
 						<p class = "verse" id="collect3_verse"></p>
 						<p id="collect3"></p>
 						<p id="collect3_antiphons"></p>
 					</div>
 				</div>
 				<div class="section">
-					<h3>Canticle</h3>
-					<p class = "verse" id="canticle_verse"></p>
-					<p id="canticle"></p>
+					<h3>Third Lesson</h3>
+					<div class="section">
+						<h4>Canticle</h4>
+						<p class = "verse" id="canticle_verse"></p>
+						<p id="canticle"></p>
+					</div>
+					<div class="section">
+						<h4>Ectenia</h4>
+						<p class="instruction">The people recite with the leader this prayer, unless it is a responsory, to which then they only give the responses.</p>
+						<p class = "verse" id="ectenia_verse"></p>
+						<p id="ectenia"></p>
+					</div>
 				</div>
 				<div class="section">
-					<h3>Greater Office of Readings</h3>
+					<h3>Fourth Lesson</h3>
 					<div class="section">
 						<h4>First Reading</h4>
 						<p class = "verse" id="reading1_verse"></p>
@@ -593,66 +596,79 @@
 					</div>
 				</div>
 			</div>
-			<div class="section" id = "intercessions">
-				<h2>Evening Intercessions</h2>
-					<p class="instruction">All now kneel again.</p>
-					<div class = "section">
-						<h3>For the Intentions of the Pope</h3>
-						<p>The Most Holy Father Francis has instructed us during this month of <span id = "monthline"></span> in the <span id = "yearline"></span> year of our Lord to pray for <span id = "intentionline"></span>: that <span id= "prayerline"></span>. Let us pray:</p>
-						
-						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-					</div>
-					<p class = "instruction">To the remainder of these petitions, the people give the response "Lord, hear our prayer."</p>
-					<div class="section">
-						<h3>For the Holy Church</h3>
-						<p>Almighty and everlasting God, Who in our Christ has revealed Thy glory to all nations, we beseech Thee to guard Thy Church, to keep Her in peace and unity, and to subject all powers and principalities to Her authority, that Thy Church spread throughout the world may preserve unencumbered in the confession of Thy Name and of Thy great works. Lord, hear our prayer.</p>
-					</div>
-					<div class="section">
-						<h3>For the Supreme Pontiff</h3>
-						<p>Almighty and everlasting God, by Whose judgment all things are established, mercifully regard the prayers of Thy people, and in Thy goodness especially hear the prayers of our Most Holy Father Francis, for his own intentions, and for the whole world of Thy Creation to be united under his authority in perfect obedience to Thee. Lord, hear our prayer.</p>
-					</div>
-					<div class="section">
-						<h3>For all Orders and Grades of the Faithful</h3>
-						<p>Almighty and everlasting God, by Whose Spirit the whole congregation of the Church is sanctified, hear our humble plea for all orders: for all bishops, priests, deacons, confessors, virgins, and all the holy people of God; that by the gift of Thy grace all may faithfully serve Thee. Lord, hear our prayer.</p>
-					</div>
-					<div class="section">
-						<h3>For the Leaders of the Lands</h3>
-						<p>Almighty and everlasting God, in Whose hands dwell all power, grant Thy grace unto those who wield power over us, and let Thy right hand protect us, that the integrity of Thy Church may be firmly based. Lord, hear our prayer.</p>
-					</div>
-					<div class="section">
-						<h3>For Catechumens</h3>
-						<p>Almighty and everlasting God, Who ever makes Thy Church fruitful with new offspring, increase the faith and understanding of our catechumens, and all those raised by Christian parents, that being born from the font of baptism, they may worthily be called Thy children. Lord, hear our prayer.</p>
-					</div>
-				<div class="section">
-					<h3>For the Needs of the Faithful</h3>
-					<p>Almighty and everlasting God, the comfort of all the afflicted and sorrowful, and the strength of those who labor: hasten the prayers of all those who call upon Thee in trouble, that all may rejoice in their necessities Thy mercy has given them, that Thou would cleanse the world of all errors: take away disease, drive away famine, open prisons, break chains, and grant safe return to travelers and health to the sick. Lord, hear our prayer.</p>
-				</div>
-				<div class="section">
-					<h3>For the Unity of the Church</h3>
-					<p>Almighty and everlasting God, Who saves all men, and wills that no man perish, look upon the souls led astray by the deceit of the Devil, that having set aside all heretical evil, their hearts may repent of their errors, and return to the unity of Thy truth in our holy Mother and Teacher, Thy Church. Lord, hear our prayer.</p>
-				</div>
-				<div class="section">
-					<h3>For the Conversion of Jews</h3>
-					<p>Almighty and everlasting God, Who wishes all men to be saved, illuminate the hearts of the Jews, that they may acknowledge Thy Son as their awaited Savior. Lord, hear our prayer.</p>
-				</div>
-				<div class="section">
-					<h3>For the Conversion of Unbelievers</h3>
-					<p>Almighty and everlasting God, Who seeks not the death of sinners, but their life, mercifully grant unto those who have not heard Thy Name and who do not know Thy great works the grace to renounce their false idols, to repent of their sins, and to convert to the true God. Lord, hear our prayer.</p>
-				</div>
-			</div>
-			<div class = "section">
-				<h2>Dismissal</h2>
-				<p class="verse" id="dismisal_verse"></p>
-				<p id="dismisal"></p>
-				<p class="verse">Deuteronomy 6:4-7</p>
-				<p>Now hear, Israel: the Lord is our God and the Lord alone. And thou shall love the Lord thy God with all thy heart and with all thy being and with all thy might. And these words that I charge thee today with shall be upon thy heart. And thou shall impress them unto thy sons and speak of them when thou sits in thy house and when thou goes on the way and when thou lies down and when thou rises.</p>
-			</div>
 			<div class="section">
-				<h2>Divine Praises</h2>
-				<p class="instruction">If the people are not already kneeling, they do so now.</p>
-				<p>Blessed be God. Blessed be His Holy Name. Blessed be Jesus Christ, true God and true Man. Blessed be the Name of Jesus. Blessed be His Most Sacred Heart. Blessed be His Most Precious Blood. Blessed be Jesus in the Most Holy Sacrament. Blessed be the Holy Spirit. Blessed be the great Mother of God, Mary most Holy. Blessed be her Holy and Immaculate Conception. Blessed be her Glorious Assumption. Blessed be the name of Mary, Virgin and Mother. Blessed be Saint Joseph, her most chaste Spouse. Blessed be God in His Angels and in His Saints. Amen.</p>
+				<h2>Concluding Rites</h2>
+				<div class = "section" id = "martyrology">
+					<h3>Martyrology</h3>
+					<p class="instruction">All continue to kneel as the roll of martyrs is pronounced by the leader.</p>
+					<p id = "martyrline"></p>
+					<ul id = "martyrs">
+						<li id = "final_martyr">And elsewhere many other holy martyrs, confessors, and holy virgins.</p>
+					</ul>
+					<p>V. Precious in the sight of the Lord is the death of His Saints.<br/>
+					R. Holy Mary and all the Saints, intercede for us with the Lord our God, so that we may merit His help and salvation. Amen.</p>
+				</div>
+				<div class="section" id = "intercessions">
+					<h3>Evening Intercessions</h3>
+						<p class="instruction">All now kneel again.</p>
+						<div class = "section">
+							<h4>For the Intentions of the Pope</h4>
+							<p>The Most Holy Father Francis has instructed us during this month of <span id = "monthline"></span> in the <span id = "yearline"></span> year of our Lord to pray for <span id = "intentionline"></span>: that <span id= "prayerline"></span>. Let us pray:</p>
+							
+							<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
+							<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
+							<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
+						</div>
+						<p class = "instruction">To the remainder of these petitions, the people give the response "Lord, hear our prayer."</p>
+						<div class="section">
+							<h4>For the Holy Church</h4>
+							<p>Almighty and everlasting God, Who in our Christ has revealed Thy glory to all nations, we beseech Thee to guard Thy Church, to keep Her in peace and unity, and to subject all powers and principalities to Her authority, that Thy Church spread throughout the world may preserve unencumbered in the confession of Thy Name and of Thy great works.</p>
+						</div>
+						<div class="section">
+							<h4>For the Supreme Pontiff</h4>
+							<p>Almighty and everlasting God, by Whose judgment all things are established, mercifully regard the prayers of Thy people, and in Thy goodness especially hear the prayers of our Most Holy Father Francis, for his own intentions, and for the whole world of Thy Creation to be united under his authority in perfect obedience to Thee.</p>
+						</div>
+						<div class="section">
+							<h4>For all Orders and Grades of the Faithful</h4>
+							<p>Almighty and everlasting God, by Whose Spirit the whole congregation of the Church is sanctified, hear our humble plea for all orders: for all bishops, priests, deacons, confessors, virgins, catechists, and all the holy people of God; that by the gift of Thy grace all may faithfully serve Thee.</p>
+						</div>
+						<div class="section">
+							<h4>For the Leaders of the Lands</h4>
+							<p>Almighty and everlasting God, in Whose hands dwell all power, grant Thy grace unto those who wield power over us, and let Thy right hand protect us, that the integrity of Thy Church may be firmly based.</p>
+						</div>
+						<div class="section">
+							<h4>For Catechumens</h4>
+							<p>Almighty and everlasting God, Who ever makes Thy Church fruitful with new offspring, increase the faith and understanding of our catechumens, and all those raised by Christian parents, that being born from the font of baptism, they may worthily be called Thy children.</p>
+						</div>
+					<div class="section">
+						<h4>For the Needs of the Faithful</h4>
+						<p>Almighty and everlasting God, the comfort of all the afflicted and sorrowful, and the strength of those who labor: hasten the prayers of all those who call upon Thee in trouble, that all may rejoice in their necessities Thy mercy has given them, that Thou would cleanse the world of all errors: take away disease, drive away famine, open prisons, break chains, and grant safe return to travelers and health to the sick.</p>
+					</div>
+					<div class="section">
+						<h4>For the Unity of the Church</h4>
+						<p>Almighty and everlasting God, Who saves all men, and wills that no man perish, look upon the souls led astray by the deceit of the Devil, that having set aside all heretical evil, their hearts may repent of their errors, and return to the unity of Thy truth in our holy Mother and Teacher, Thy Church.</p>
+					</div>
+					<div class="section">
+						<h4>For the Conversion of Jews</h4>
+						<p>Almighty and everlasting God, Who wishes all men to be saved, illuminate the hearts of the Jews, that they may acknowledge Thy Son as their awaited Savior.</p>
+					</div>
+					<div class="section">
+						<h4>For the Conversion of Unbelievers</h4>
+						<p>Almighty and everlasting God, Who seeks not the death of sinners, but their life, mercifully grant unto those who have not heard Thy Name and who do not know Thy great works the grace to renounce their false idols, to repent of their sins, and to convert to the true God.</p>
+					</div>
+				</div>
+				<div class = "section">
+					<h3>Dismissal</h3>
+					<p class="verse" id="dismisal_verse"></p>
+					<p id="dismisal"></p>
+					<p class="verse">Deuteronomy 6:4-7</p>
+					<p>Now hear, Israel: the Lord is our God and the Lord alone. And thou shall love the Lord thy God with all thy heart and with all thy being and with all thy might. And these words that I charge thee today with shall be upon thy heart. And thou shall impress them unto thy sons and speak of them when thou sits in thy house and when thou goes on the way and when thou lies down and when thou rises.</p>
+				</div>
+				<div class="section">
+					<h3>Divine Praises</h3>
+					<p class="instruction">If the people are not already kneeling, they do so now.</p>
+					<p>Blessed be God. Blessed be His Holy Name. Blessed be Jesus Christ, true God and true Man. Blessed be the Name of Jesus. Blessed be His Most Sacred Heart. Blessed be His Most Precious Blood. Blessed be Jesus in the Most Holy Sacrament. Blessed be the Holy Spirit. Blessed be the great Mother of God, Mary most Holy. Blessed be her Holy and Immaculate Conception. Blessed be her Glorious Assumption. Blessed be the name of Mary, Virgin and Mother. Blessed be Saint Joseph, her most chaste Spouse. Blessed be God in His Angels and in His Saints. Amen.</p>
+				</div>
 			</div>
 		</div>
 		<script>
