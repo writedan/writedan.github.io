@@ -545,7 +545,7 @@
 				<div class="section">
 					<p class = "instruction">The Oration of the Collect is the true proper prayer of the day and accordingly uniquely expressive of the liturgical day.</p>
 					<h3>Collect</h3>
-					<p id = "oration"></p>
+					<p><span id = "oration"></span></p>
 					<p class = "instruction">After having recited the Oration, the leader pauses so that the significance of the prayer may be contemplated by the people.</p>
 				</div>
 				<div class="section">
@@ -710,7 +710,7 @@
 					start = Number(verse.split(":")[1].split("-")[0]);
 					end = Number(verse.split(":")[1].split("-")[1]);
 				} else {
-					start = 1, end = NaN;
+					start = 1, end = 1000;
 				}
 				
 				getPsalm(chapter, function(psalm){
@@ -820,6 +820,23 @@
 				}
 				
 				console.log(fromWeek);
+				getYaml("calendar/" + dayIdParts[0].toLowerCase() + "/" + dayIdParts[1] + "/week.yml", function(weekData){
+					console.log(weekData);
+					if ("collect" in fromWeek) {
+						document.getElementById("collect1_verse").innerHTML = weekData.collect[0].verse;
+						document.getElementById("collect1").innerHTML = weekData.collect[0].text;
+						
+						document.getElementById("collect2_verse").innerHTML = weekData.collect[1].verse;
+						document.getElementById("collect2").innerHTML = weekData.collect[1].text;
+						
+						document.getElementById("collect3_verse").innerHTML = weekData.collect[2].verse;
+						document.getElementById("collect3").innerHTML = weekData.collect[2].text;
+					}
+					
+					if ("oration" in fromWeek) {
+						document.getElementById("oration").innerHTML = weekData.oration;
+					}
+				});
 			});
 		</script>
 	</body>
