@@ -20,11 +20,11 @@ verses:
   - text: |
       I shall acclaim Thee with an honest heart
         as I learn Thy righteous laws.
-  - text: |
+  - 
+    text: |
       Thy statutes I shall observe.
         Do not utterly forsake me.
-      
-      next
+    break: true
   - text: |
      How shall a young man make his path worthy?
         To guard it as befits Thy word.
