@@ -1,82 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
-			#rule {
-				width: 100%;
-				padding: 2vw;
-				font-family: 'IM Fell DW Pica', serif;
-				font-size: 1.5vmax;
-			}
-			
-			.section {
-				//border: 1px solid;
-				margin: 15px;
-			}
-			
-			.section .section {
-				//border: 1px dotted;
-			}
-			
-			.section .section .section {
-				border:0px;
-			}
-			
-			.verse {
-				color:red;
-				font: 12px "Times New Roman";
-				margin-bottom: 0;
-			}
-			
-			.verse + p {
-				margin-top: 0;
-			}
-			
-			.instruction {
-				color: red;
-				font-weight: bold;
-				font-style: italic;
-				display: none;
-			}
-
-			li {
-				list-style-type: "— ";
-			}
-			
-			@media only screen and (min-width: 800px) {
-				#rule {
-					column-count: 1;
-					width: 100%;
-					padding: 2vw;
-					font-family: 'IM Fell DW Pica', serif;
-					font-size: 1vmax;
-				}
-			}
-			
-			@media only screen and (max-width: 799px) {
-				#rule {
-					column-count: 1;
-					width: 100%;
-					padding: 2vw;
-					font-family: 'IM Fell DW Pica', serif;
-					font-size: 10vmax;
-				}
-			}
-			
-			@media only printer {
-				#rule {
-					column-count: 1;
-					width: 8in;
-					padding: 2vw;
-					font-family: 'IM Fell DW Pica', serif;
-					font-size: 5vmax;
-				}
-			}
-			
-			br {
-				margin-bottom: 0.5vh;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="style.css?a=1">
 		<script>
 			/**
 				Time Functions
@@ -929,8 +854,6 @@
 					}
 				});
 			});
-			
-			alert(window.screen.availWidth);
 		</script>
 	</body>
 </html>

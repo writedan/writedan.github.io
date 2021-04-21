@@ -1,0 +1,50 @@
+#rule {
+	width: 100%;
+	padding: 2vw;
+	font-family: 'IM Fell DW Pica', serif;
+	font-size: 1vw;
+}
+
+.section {
+	//border: 1px solid;
+	margin: 15px;
+}
+
+.section .section {
+	//border: 1px dotted;
+}
+
+.section .section .section {
+	border: 0px;
+}
+
+.verse {
+	color: red;
+	font: 12px "Times New Roman";
+	margin-bottom: 0;
+}
+
+.verse + p {
+	margin-top: 0;
+}
+
+.instruction {
+	color: red;
+	font-weight: bold;
+	font-style: italic;
+	display: none;
+}
+
+li {
+	list-style-type: "— ";
+}
+
+br {
+	margin-bottom: 0.5vh;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
