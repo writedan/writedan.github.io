@@ -457,10 +457,12 @@
 				<div class="section" >
 					<p class="verse" id ="exhortation_verse"></p>
 					<p id="exhortation"></p>
+					<p>R. Thanks be to God.</p>
 				</div>
 				<div class="section">
 					<p class="verse" id ="call_verse"></p>
 					<p id="call"></p>
+					<p>R. Lord, have mercy upon us.</p>
 				</div>
 			</div>
 			<div class = "section" id="invitatory">
@@ -480,6 +482,7 @@
 				<h2>Sapiental</h2>
 				<p class = "verse" id="sapiental_verse"></p>
 				<p id="sapiental"></p>
+				<p>R. Christ, have mercy upon us.</p>
 			</div>
 			<div class="section">
 				<h2>Ectenia</h2>
@@ -491,6 +494,7 @@
 				<h2>Gradual</h2>
 				<p class = "verse" id="gradual_verse"></p>
 				<p id="gradual"></p>
+				<p>R. Lord, have mercy upon us.</p>
 			</div>
 			<div class = "section" id="contrition">
 				<h2>Rite of Contrition</h2>
@@ -539,7 +543,13 @@
 					<p id="incipit"></p>
 				</div>
 				<div class="section">
+					<p class = "instruction">The Oration of the Collect is the true proper prayer of the day and accordingly uniquely expressive of the liturgical day.</p>
 					<h3>Collect</h3>
+					<p id = "oration"></p>
+					<p class = "instruction">After having recited the Oration, the leader pauses so that the significance of the prayer may be contemplated by the people.</p>
+				</div>
+				<div class="section">
+					<h3>Lesser Office of Readings</h3>
 					<div class="section">
 						<p class = "verse" id="collect1_verse"></p>
 						<p id="collect1"></p>
@@ -555,12 +565,6 @@
 						<p id="collect3"></p>
 						<p id="collect3_antiphons"></p>
 					</div>
-					<div class="section">
-						<p class = "instruction">The Oration of the Collect is the true proper prayer of the day and accordingly uniquely expressive of the liturgical day.</p>
-						<p class = "verse">Oration of the Sunday or Solemnity</p>
-						<p id = "oration"></p>
-						<p class = "instruction">After having recited the Oration, the leader pauses so that the significance of the prayer may be contemplated by the people.</p>
-					</div>
 				</div>
 				<div class="section">
 					<h3>Canticle</h3>
@@ -568,7 +572,7 @@
 					<p id="canticle"></p>
 				</div>
 				<div class="section">
-					<h3>Office of Readings</h3>
+					<h3>Greater Office of Readings</h3>
 					<div class="section">
 						<h4>First Reading</h4>
 						<p class = "verse" id="reading1_verse"></p>
@@ -585,6 +589,7 @@
 						<h4>Third Reading</h4>
 						<p class = "verse" id="reading3_verse"></p>
 						<p id="reading3"></p>
+						<p>R. Glory be to the Father, and to the Son, and to the Holy Spirit. Amen.</p>
 					</div>
 				</div>
 			</div>
@@ -642,7 +647,7 @@
 				<p class="verse" id="dismisal_verse"></p>
 				<p id="dismisal"></p>
 				<p class="verse">Deuteronomy 6:4-7</p>
-				<p>Hear, Israel: the Lord is our God and the Lord alone. And thou shall love the Lord thy God with all thy heart and with all thy being and with all thy might. And these words that I charge thee today with shall be upon thy heart. And thou shall impress them unto thy sons and speak of them when thou sits in thy house and when thou goes on the way and when thou lies down and when thou rises.</p>
+				<p>Now hear, Israel: the Lord is our God and the Lord alone. And thou shall love the Lord thy God with all thy heart and with all thy being and with all thy might. And these words that I charge thee today with shall be upon thy heart. And thou shall impress them unto thy sons and speak of them when thou sits in thy house and when thou goes on the way and when thou lies down and when thou rises.</p>
 			</div>
 			<div class="section">
 				<h2>Divine Praises</h2>
@@ -668,15 +673,16 @@
 			*/
 			
 			function getNewlineReplacement(text) { 
+				console.log(text.replaceAll("\n    \n", "----"));
 				text = text.replaceAll("  ", "&emsp;");
-				console.log(text);
 				if (text.includes("&emsp;")) {
+					console.log(text);
 					text = text.replaceAll("\n","<br/>");
 				} else {
 					text = text.replaceAll("\n","<p>");
 				}
 				
-				return text.replaceAll("	", "&emsp;") + "<hr/>";
+				return text.replaceAll("	", "&emsp;").replaceAll("\n&emsp;\n","<br/>") + "<hr/>";
 			}
 			
 			function getPsalm(num, callback, start=1, end=1000) {
@@ -685,19 +691,28 @@
 					let len = Math.min(end, psalm.verses.length);
 					if (isNaN(end)) len = start;
 					for (let i = start - 1; i < len; i++) {
-						console.log(i);
 						text = text + psalm.verses[i].text;
+						if (psalm.verses[i]["break"] == true) {
+							text = text + "<p>";
+						}
 					}
 					
-					callback(text);
+					callback(text.replaceAll("----", "\n\n"));
 				});
 			}
 			
 			function getPsalmFromVerse(verse, callback) {
+				verse = verse + "";
 				let chapter = Number(verse.split(":")[0]);
-				let start = Number(verse.split(":")[1].split("-")[0]);
-				let end = Number(verse.split(":")[1].split("-")[1]);
-				console.log("Psalm " + chapter + ":" + start + "-" + end);
+				
+				let start, end;
+				if (verse.includes("-")) {
+					start = Number(verse.split(":")[1].split("-")[0]);
+					end = Number(verse.split(":")[1].split("-")[1]);
+				} else {
+					start = 1, end = NaN;
+				}
+				
 				getPsalm(chapter, function(psalm){
 					callback(psalm);
 				}, start, end);
@@ -747,21 +762,23 @@
 				document.getElementById("prayerline").innerHTML = prayer;
 				document.getElementById("monthline").innerHTML = monthTable[month - 1];
 
-				document.getElementById("dismisal_verse").innerHTML = data.dismissal[todayDate.getDay()].verse;
-				document.getElementById("dismisal").innerHTML = data.dismissal[todayDate.getDay()].text;
+				if (data.dismissal[todayDate.getDay()] != null) {
+					document.getElementById("dismisal_verse").innerHTML = data.dismissal[todayDate.getDay()].verse;
+					document.getElementById("dismisal").innerHTML = data.dismissal[todayDate.getDay()].text;
+				}
 				
 				let office = morning? "morning" : "evening";
 				let f = function(id, psalm){
-					document.getElementById(id).innerHTML = getNewlineReplacement(psalm);
+					getPsalmFromVerse(psalm, function(text){
+						document.getElementById(id + "_verse").innerHTML = "Psalm " + psalm;
+						document.getElementById(id).innerHTML = getNewlineReplacement(text);
+					});
 				};
 				
-				for (verse in data.psalms[dayOfWeek][office]) {
-					let v = data.psalms[dayOfWeek][office][verse];
-					document.getElementById(verse + "_verse").innerHTML = v;
-					getPsalmFromVerse(v, function(text){
-						f(v, text);
-					});
-				}
+				f("exhortation", data.psalms[dayOfWeek][office].exhortation);
+				f("call", data.psalms[dayOfWeek][office].call);
+				f("gradual", data.psalms[dayOfWeek][office].gradual);
+				f("sapiental", data.psalms[dayOfWeek][office].sapiental);
 			});
 			
 			let dayIdParts = dayId.split("-");
