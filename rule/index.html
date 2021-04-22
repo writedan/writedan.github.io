@@ -34,7 +34,7 @@
 			}
 
 			li {
-				list-style-type: "— ";
+				list-style-type: "â€” ";
 			}
 
 			br {
@@ -806,7 +806,7 @@
 
 				if (data.dismissal[todayDate.getDay()] != null) {
 					document.getElementById("dismisal_verse").innerHTML = data.dismissal[todayDate.getDay()].verse;
-					document.getElementById("dismisal").innerHTML = data.dismissal[todayDate.getDay()].text;
+					document.getElementById("dismisal").innerHTML = getNewlineReplacement(data.dismissal[todayDate.getDay()].text);
 				}
 				
 				let office = morning? "morning" : "evening";
