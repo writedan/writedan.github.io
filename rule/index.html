@@ -18,6 +18,9 @@
 				font-size: 0.85em;
 				margin-bottom: 0;
 			}
+			
+			span.verse {
+			}
 
 			.verse + p {
 				margin-top: 0;
@@ -463,14 +466,14 @@
 				</div>
 				<div class = "section" id="invitatory">
 					<h3>Invitatory</h3>
-					<p>In the Name of the Father, and of the Son, and of the Holy Spirit:</p>
+					<p>In the Name of the Father, and of the Son, <span class="verse">&#9769;</span> and of the Holy Spirit:</p>
 					<p>V. O Lord, open Thou my lips.<br/>
 					R. And my mouth shall declare Thy praise.<br/>
 					V. O God, come to my assistance.<br/>
 					R. O Lord, make haste to help me.<br/>
 					V. By the sign of His Holy Cross:<br/>
 					R. Our God delivered us.<br/>
-					V. Glory be to the Father, and to the Son, and to the Holy Spirit.<br/>
+					V. Glory be to the Father, and to the Son, <span class="verse">&#9769;</span> and to the Holy Spirit.<br/>
 					R. As it was in the beginning shall now and ever be, unto the age of ages.</p>
 					<p>Amen.</p>
 				</div>
@@ -478,19 +481,19 @@
 					<h3>Call</h3>
 					<p class="verse" id ="call_verse"></p>
 					<p id="call"></p>
-					<p>R. Lord, have mercy upon us.</p>
+					<p>R. Lord <span class="verse">&#9769;</span>, have mercy upon us.</p>
 				</div>
 				<div class="section">
 					<h3>Sapiental</h3>
 					<p class = "verse" id="sapiental_verse"></p>
 					<p id="sapiental"></p>
-					<p>R. Christ, have mercy upon us.</p>
+					<p>R. Christ <span class="verse">&#9769;</span>, have mercy upon us.</p>
 				</div>
 				<div class="section">
 					<h3>Gradual</h3>
 					<p class = "verse" id="gradual_verse"></p>
 					<p id="gradual"></p>
-					<p>R. Lord, have mercy upon us.</p>
+					<p>R. Lord <span class="verse">&#9769;</span>, have mercy upon us.</p>
 				</div>
 			</div>
 			<div class = "section" id="contrition">
@@ -518,7 +521,7 @@
 				</div>
 				<div class="section">
 					<h3>Doxology</h3>
-					<p>Deliver us, we beseech Thee O Lord, from all evils past, present, and to come, and by the intercession of the blessed and glorious ever-Virgin Mary, Mother of God, together with blessed Michael the Archangel, blessed John the Baptist, Thy holy Apostles Peter and Paul, and with all Thy Saints, mercifully grant peace in our days, that through the bounteous help of Thy mercy we may be always free from sin and safe from all disquiet. Through Jesus Christ our Lord Thy Son, Who lives and reigns with Thee in the unity of the Holy Spirit unto the age of ages.<br/>R. Amen.</p>
+					<p>Deliver us, we beseech Thee O Lord, from all evils past, present, and to come, and by the intercession of the blessed and glorious ever-Virgin Mary, Mother of God, together with blessed Michael the Archangel, blessed John the Baptist, Thy holy Apostles Peter and Paul, and with all Thy Saints, mercifully grant peace in our days, that through the bounteous help of Thy mercy we may be always free from sin and safe from all disquiet. Through Jesus <span class="verse">&#10016;</span> Christ our Lord Thy Son, Who lives and reigns with Thee in the unity of the Holy Spirit unto the age of ages.<br/>R. Amen.</p>
 				</div>
 			</div>
 			<div class="section">
@@ -578,19 +581,19 @@
 								<h4>First Reading</h4>
 								<p class = "verse" id="reading1_verse"></p>
 								<p id="reading1"></p>
-								<p>R. Glory be to the Father, and to the Son, and to the Holy Spirit. Amen.</p>
+								<p>R. Glory be to the Father, and to the Son, <span class="verse">&#9769;</span> and to the Holy Spirit. Amen.</p>
 							</div>
 							<div class="section">
 								<h4>Second Reading</h4>
 								<p class = "verse" id="reading2_verse"></p>
 								<p id="reading2"></p>
-								<p>R. Glory be to the Father, and to the Son, and to the Holy Spirit. Amen.</p>
+								<p>R. Glory be to the Father, and to the Son, <span class="verse">&#9769;</span> and to the Holy Spirit. Amen.</p>
 							</div>
 							<div class="section">
 								<h4>Third Reading</h4>
 								<p class = "verse" id="reading3_verse"></p>
 								<p id="reading3"></p>
-								<p>R. Glory be to the Father, and to the Son, and to the Holy Spirit. Amen.</p>
+								<p>R. Glory be to the Father, and to the Son, <span class="verse">&#9769;</span> and to the Holy Spirit. Amen.</p>
 							</div>
 					</div>
 				</div>
@@ -691,7 +694,7 @@
 				<div class="section">
 					<h3>Divine Praises</h3>
 					<p class="instruction">If the people are not already kneeling, they do so now.</p>
-					<p>Blessed be God. Blessed be His Holy Name. Blessed be Jesus Christ, true God and true Man. Blessed be the Name of Jesus. Blessed be His Most Sacred Heart. Blessed be His Most Precious Blood. Blessed be Jesus in the Most Holy Sacrament. Blessed be the Holy Spirit. Blessed be the great Mother of God, Mary most Holy. Blessed be her Holy and Immaculate Conception. Blessed be her Glorious Assumption. Blessed be the name of Mary, Virgin and Mother. Blessed be Saint Joseph, her most chaste Spouse. Blessed be God in His Angels and in His Saints. Amen.</p>
+					<p>Blessed be God. Blessed be His Holy Name. Blessed be Jesus <span class="verse">&#10016;</span> Christ, true God and true Man. Blessed be the Name <span class="verse">&#10016;</span> of Jesus. Blessed be His Most Sacred Heart. Blessed be His Most Precious Blood. Blessed be Jesus <span class="verse">&#10016;</span> in the Most Holy Sacrament. Blessed be the Holy Spirit. Blessed be the great Mother of God, Mary most Holy. Blessed be her Holy and Immaculate Conception. Blessed be her Glorious Assumption. Blessed be the name of Mary, Virgin and Mother. Blessed be Saint Joseph, her most chaste Spouse. Blessed be God in His Angels and in His Saints. Amen.</p>
 				</div>
 			</div>
 		</div>
@@ -714,14 +717,14 @@
 			*/
 			
 			function getNewlineReplacement(text) { 
-				text = text.replaceAll("  ", "&emsp;");
+				text = text.replaceAll("  ", " &emsp;");
 				if (text.includes("&emsp;")) {
 					text = text.replaceAll("\n","<br/>");
 				} else {
-					text = text.replaceAll("\n","<p>");
+					text = text.replaceAll("\n","<p></p>");
 				}
 				
-				return text.replaceAll("	", "&emsp;").replaceAll("\n&emsp;\n","<br/>") ;
+				return text.replaceAll("	", " &emsp;").replaceAll("\n&emsp;\n","<br/>").replaceAll("Jesus", "Jesus <span class=\"verse\">&#10016;</span>"); ;
 			}
 			
 			function getPsalm(num, callback, start=1, end=1000) {
@@ -730,7 +733,7 @@
 					let len = Math.min(end, psalm.verses.length);
 					if (isNaN(end)) len = start;
 					for (let i = start - 1; i < len; i++) {
-						text = text + psalm.verses[i].text;
+						text =  text + "<span class=\"verse\" style=\"display:none;\">" + (i+1) + " </span>" + psalm.verses[i].text;
 						if (psalm.verses[i]["break"] == true) {
 							text = text + "<p>";
 						}
@@ -863,17 +866,17 @@
 					console.log(weekData);
 					if ("collect" in fromWeek) {
 						document.getElementById("collect1_verse").innerHTML = weekData.collect[0].verse;
-						document.getElementById("collect1").innerHTML = weekData.collect[0].text;
+						document.getElementById("collect1").innerHTML = getNewlineReplacement(weekData.collect[0].text);
 						
 						document.getElementById("collect2_verse").innerHTML = weekData.collect[1].verse;
-						document.getElementById("collect2").innerHTML = weekData.collect[1].text;
+						document.getElementById("collect2").innerHTML = getNewlineReplacement(weekData.collect[1].text);
 						
 						document.getElementById("collect3_verse").innerHTML = weekData.collect[2].verse;
-						document.getElementById("collect3").innerHTML = weekData.collect[2].text;
+						document.getElementById("collect3").innerHTML = getNewlineReplacement(weekData.collect[2].text);
 					}
 					
 					if ("oration" in fromWeek) {
-						document.getElementById("oration").innerHTML = weekData.oration;
+						document.getElementById("oration").innerHTML = getNewlineReplacement(weekData.oration);
 					}
 				});
 			});
