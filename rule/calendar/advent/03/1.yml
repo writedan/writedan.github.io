@@ -4,12 +4,41 @@ morning:
   canticle:
   readings:
     -
+      verse: Isaiah 29:13-24
     -
+      verse: Matthew 11:2-11
     -
+      verse: |
+        Sermon CCXCIII
+        Chapter III
+        Saint Augustine of Hippo, Doctor and Bishop
 evening:
   psalm:
   canticle:
   readings:
     -
+      verse: Philippians 4:4-5
+      text: >
+        Rejoice in the Lord always: again I will say, "Rejoice." Let your gentleness be known to everyone. The Lord is near.
     -
+      verse: Revelation 19:1, 5-7
+      text: |
+        Alleluia!
+        Salvation and glory and power to our God:
+          for His judgments are true and just:
+        Praise our God,
+          all ye His servants,
+        all who fear Him,
+          small and great.
+        
+        Alleluia!
+        For the Lord our God
+          the Almighty reigns.
+        Let us rejoice and exult
+          and give Him the glory,
+        for the marriage of the Lamb has come,
+          and His bride has made herself ready.
     -
+      verse: |
+        Homily VII on the Gospels
+        Saint Gregory the Great, Doctor and Pope
