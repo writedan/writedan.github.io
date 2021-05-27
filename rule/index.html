@@ -3,10 +3,13 @@
 	<head>
 		<style>
 			#rule {
-				width: 100%;
+				width: 8.5in;
 				padding: 2vw;
 				font-family: 'IM Fell DW Pica', serif;
-				font-size: 3.5vh;
+				font-size: 2.5vh;
+				
+				text-align: justify;
+				text-justify: inter-word;
 			}
 
 			.section {
@@ -449,252 +452,270 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- unfortunately necessary -->
 	</head>
 	<body>
-		<div id = "rule">
+		<div id="rule">
 			<div class="section">
-				<h1 id = "dateline"></h1>
-				<h2 id = "timeline"></h2>
-				<hr/>
+				<h1 id="dateline"></h1>
+				<h1 id="timeline"></h1>
 			</div>
-			<div class="section" id="exhortations">
-				<h2>Office of Psalms</h2>
-				<div class="section" >
-					<h3>Exhortation</h3>
-					<p class="instruction">At the beginning, the leader shall read with a loud voice these psalms and prayers. If the leader is a cleric, he shall stand in front of the people; otherwise, he shall stand in their midst. The people stand as he begins the first verse, and remaing standing until the Rite of Contrition.</p>
-					<p class="verse" id ="exhortation_verse"></p>
-					<p id="exhortation"></p>
-				</div>
-				<div class = "section" id="invitatory">
-					<h3>Invitatory</h3>
-					<p>In the Name of the Father, and of the Son, <span class="verse">&#9769;</span> and of the Holy Spirit:</p>
-					<p>V. O Lord, open Thou my lips.<br/>
-					R. And my mouth shall declare Thy praise.<br/>
-					V. O God, come to my assistance.<br/>
-					R. O Lord, make haste to help me.<br/>
-					V. By the sign of His Holy Cross:<br/>
-					R. Our God delivered us.<br/>
-					V. Glory be to the Father, and to the Son, <span class="verse">&#9769;</span> and to the Holy Spirit.<br/>
-					R. As it was in the beginning shall now and ever be, unto the age of ages. Amen.</p>
-					<!--<p>I believe in God, the Father almighty, Creator of heaven and earth. And in Jesus <span class="verse">&#10016;</span> Christ, His only Son: <span class="verse">(kneeling)</span> Who was conceived by the Holy Spirit, born of the Virgin Mary, <span class="verse">(standing)</span> suffered under Pontius Pilate, was crucified, died, and was buried. He descended into hell and rose again from the dead. He ascended into heaven and sits at the right hand of God the Father almighty: from thence He shall come to judge the living and the dead. I believe in the Holy Spirit, the Holy Catholic Church, the Communion of Saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen.</p>-->
-				</div>
-				<div class="section">
-					<h3>Call</h3>
-					<p class="verse" id ="call_verse"></p>
-					<p id="call"></p>
-					<p>R. Lord <span class="verse">&#9769;</span>, have mercy upon us.</p>
-				</div>
-				<div class="section">
-					<h3>Sapiental</h3>
-					<p class = "verse" id="sapiental_verse"></p>
-					<p id="sapiental"></p>
-					<p>R. Christ <span class="verse">&#9769;</span>, have mercy upon us.</p>
-				</div>
-				<div class="section">
-					<h3>Gradual</h3>
-					<p class = "verse" id="gradual_verse"></p>
-					<p id="gradual"></p>
-					<p>R. Lord <span class="verse">&#9769;</span>, have mercy upon us.</p>
-				</div>
+			<div class="section">
+				<h2>Invitatory</h2>
+				<p><span class="verse" id="introit_1_verse"></span> <span id="introit_1"></span> <span class="verse">V.</span> Blessed be the kingdom of God the Father, the Son, and the Holy Spirit: <span class="verse">R.</span> now and for all ages of ages. Amen. <span class="verse" id="introit_2_verse"></span> <span id="introit_2"></span></p>
+				
+				<p>In the Name of the Father and of the Son and of the Holy Spirit:</p>
+				<p>
+					<span class="verse">V.</span> O Lord, open Thou my lips.<br/>
+					<span class="verse">R.</span> And my mouth shall declare Thy praise.<br/>
+					<span class="verse">V.</span> O God, come to my assistance.<br/>
+					<span class="verse">R.</span> O Lord, make haste to help me.<br/>
+					<span class="verse">V.</span> By the sign of His holy Cross:<br/>
+					<span class="verse">R.</span> Our God has delivered us.
+				</p>
+				
+				<p>
+					<span class="verse">V.</span> Glory be to the Father and to the Son and to the Holy Spirit:</br>
+					<span class="verse">R.</span> As it was in the beginning shall now and ever be, unto the age of ages.
+				</p>
+				<p>Amen.</p>
 			</div>
-			<div class = "section" id="contrition">
-				<h2>Office of Contrition</h2>
-				<p class="instruction">All now kneel, as the leader opens the Lord's Prayer and the people give its conclusion.</p>
+			<div class="section">
+				<h2>Antiphonary</h2>
 				<div class="section">
-					<h3>Lord's Prayer</h3>
-					<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-					R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
+					<h3>First Antiphon</h3>
+					<p>
+						Let us pray:<br/>
+						O Lord our God, whose power is unequalled and glory incomprehensible, whose mercy is measureless, and love unspeakable: in Thy tender mercy look upon us in the fullness of Thy compassion. For Thine is the strength and Thine is the kingdom, the power, and the glory: now and for all ages of ages. Amen.
+					</p>
+					<p><span class="verse" id="antiphonary_1_verse"></span> <span id="antiphonary_1"></span></p>
+					<p>
+						<span class="verse">R.</span> <span id="antiphonary_1_1"></span><br/>
+						<span class="verse">V.</span> <span id="antiphonary_1_2"></span><br/>
+						<span class="verse">R.</span> <span id="antiphonary_1_3"></span>
+					</p>
 				</div>
 				<div class="section">
-					<h3>Examination of Conscience</h3>
-					<p class="instruction">The examination is silently recited, as all study their conscience according to the words.</p>
-					<p>Forgive me my sins, O Lord, forgive me my sins: the sins of my age, the sins of my youth; the sins of my soul, the sins of my body; my idle sins, my willed sins; the sins I know, the sins I do not know, and the sins I have concealed for so long and are now hidden from my memory.</p>
-					
-					<p class="instruction">The leader then recites the following preface to the Confiteor.</p>
-					<p>O Lord, Almighty and Eternal God, we have errored and strayed from Thy ways like lost sheep. We have followed the devices and desires of our own hearts. We have offended against Thy holy laws. We have left undone those things we ought to have done, and done those things we ought to have left undone. But Thou, O Lord, desires not the death of the sinner, but his life: a contrite and sorrowful heart Thou will never despise. Thus we pray:</p>
+					<h3>Second Antiphon</h3>
+					<p>
+						Let us pray:<br/>
+						O Lord our God, save Thy people and bless Thy inheritance, guard the fullness of Thy Church, make them holy who love the beauty of Thy temple: glorify them in return with Thy divine power, and forsake not those who hope in Thee. For Thine is the strength and Thine is the kingdom, the power, and the glory: now and for all ages of ages. Amen.
+					</p>
+					<p><span class="verse" id="antiphonary_2_verse"></span> <span id="antiphonary_2"></span></p>
+					<p>
+						<span class="verse">R.</span> <span id="antiphonary_2_1"></span><br/>
+						<span class="verse">V.</span> <span id="antiphonary_2_2"></span><br/>
+						<span class="verse">R.</span> <span id="antiphonary_2_3"></span>
+					</p>
 				</div>
 				<div class="section">
-					<h3>Confiteor</h3>
-					<p class="instruction">The people recite the Confiteor with the leader.</p>
-					<p>I confess to almighty God, to blessed Mary ever-Virgin, to blessed Michael the Archangel, to blessed John the Baptist, to the holy Apostles Peter and Paul, and to all the Saints: I have greatly sinned in thought, word, and deed: through my fault, through my fault, through my most grievous fault. Therefore I beseech blessed Mary ever-Virgin, blessed Michael the Archangel, blessed John the Baptist, the holy Apostles Peter and Paul, and all the Saints to pray for me to the Lord our God.</p>
-					<p>V. May almighty God have mercy on us, forgive us our sins, and bring us to everlasting life.<br/>R. Amen.</p>
-					<p>V. May the almighty and merciful Lord grant us pardon, absolution, and remission of our sins.<br/>R. Amen.</p>
-				</div>
-				<div class="section">
-					<h3>Doxology</h3>
-					<p>Deliver us, we beseech Thee O Lord, from all evils past, present, and to come, and by the intercession of the blessed and glorious ever-Virgin Mary, Mother of God, together with blessed Michael the Archangel, blessed John the Baptist, Thy holy Apostles Peter and Paul, and with all Thy Saints, mercifully grant peace in our days, that through the bounteous help of Thy mercy we may be always free from sin and safe from all disquiet. Through Jesus <span class="verse">&#10016;</span> Christ our Lord Thy Son, Who lives and reigns with Thee in the unity of the Holy Spirit unto the age of ages.<br/>R. Amen.</p>
+					<h3>Third Antiphon</h3>
+					<p>
+						Let us pray:<br/>
+						O Lord our God, receive the fervent supplication from Thy servants, and have mercy on us according to the multitude of Thy mercies: and send down upon us Thy wondrous gifts and upon all Thy people who await from Thee the riches of Thy mercies. For Thine is the strength and Thine is the kingdom, the power, and the glory: now and for all ages of ages. Amen.
+					</p>
+					<p><span class="verse" id="antiphonary_3_verse"></span> <span id="antiphonary_3"></span></p>
+					<p>
+						<span class="verse">R.</span> <span id="antiphonary_3_1"></span><br/>
+						<span class="verse">V.</span> <span id="antiphonary_3_2"></span><br/>
+						<span class="verse">R.</span> <span id="antiphonary_3_3"></span>
+					</p>
 				</div>
 			</div>
 			<div class="section">
-				<h2>Office of Readings</h2>
-				<p class="instruction">All but the leader may now sit, but it is proper to stand for readings from the holy Gospels according to his instruction.</p>
-				<div class="section">
-					<h3>First Lesson</h3>
-						<div class="section">
-							<p class = "instruction">The Oration of the Collect is the true proper prayer of the day and accordingly uniquely expressive of the liturgical day.</p>
-							<h4>Collect</h4>
-							<p><span id = "oration"></span></p>
-							<p class = "instruction">After having recited the Oration, the leader pauses so that the significance of the prayer may be contemplated by the people.</p>
-						</div>
-						<div class="section">
-							<h4>Incipit</h4>
-							<p class = "verse" id="incipit_verse"></p>
-							<p id="incipit"></p>
-						</div>
-					<div class="section">
-						<h4>Lections</h4>
-						<div class="section">
-							<h4>First Reading</h4>
-							<p class = "verse" id="collect1_verse"></p>
-							<p id="collect1"></p>
-							<p id="collect1_antiphons"></p>
-						</div>
-						<div class="section">
-							<h4>Second Reading</h4>
-							<p class = "verse" id="collect2_verse"></p>
-							<p id="collect2"></p>
-							<p id="collect2_antiphons"></p>
-						</div>
-						<div class="section">
-							<h4>Third Reading</h4>
-							<p class = "verse" id="collect3_verse"></p>
-							<p id="collect3"></p>
-							<p id="collect3_antiphons"></p>
-						</div>
-					</div>
-				</div>
-				<div class="section">
-					<h3>Second Lesson</h3>
-						<div class="section">
-							<h4>Collect</h4>
-							<p class="instruction">The people recite with the leader this prayer, unless it is a responsory, to which then they only give the responses.</p>
-							<p class = "verse" id="ectenia_verse"></p>
-							<p id="ectenia"></p>
-						</div>
-						<div class="section">
-							<h4>Incipit</h4>
-							<p class = "verse" id="canticle_verse"></p>
-							<p id="canticle"></p>
-						</div>
-					<div class="section">
-							<h4>Lections</h4>
-							<div class="section">
-								<h4>First Reading</h4>
-								<p class = "verse" id="reading1_verse"></p>
-								<p id="reading1"></p>
-								<p>R. Glory be to the Father, and to the Son, <span class="verse">&#9769;</span> and to the Holy Spirit. Amen.</p>
-							</div>
-							<div class="section">
-								<h4>Second Reading</h4>
-								<p class = "verse" id="reading2_verse"></p>
-								<p id="reading2"></p>
-								<p>R. Glory be to the Father, and to the Son, <span class="verse">&#9769;</span> and to the Holy Spirit. Amen.</p>
-							</div>
-							<div class="section">
-								<h4>Third Reading</h4>
-								<p class = "verse" id="reading3_verse"></p>
-								<p id="reading3"></p>
-								<p>R. Glory be to the Father, and to the Son, <span class="verse">&#9769;</span> and to the Holy Spirit. Amen.</p>
-							</div>
-					</div>
-				</div>
+				<h2>Ectenia</h2>
+				<p class="verse" id="ectenia_verse"></p>
+				<p id="ectenia"></p>
 			</div>
 			<div class="section">
-				<h2>Office of Benediction</h2>
-				<div class = "section" id = "martyrology">
-					<h3>Martyrology</h3>
-					<p class="instruction">All continue to kneel as the roll of martyrs is pronounced by the leader.</p>
-					<p id = "martyrline"></p>
-					<ul id = "martyrs">
-						<li id = "final_martyr">And elsewhere many other holy martyrs, confessors, and holy virgins.</p>
-					</ul>
-					<p>V. Precious in the sight of the Lord is the death of His Saints.<br/>
-					R. Holy Mary and all the Saints, intercede for us with the Lord our God, so that we may merit His help and salvation. Amen.</p>
-				</div>
-				<div class="section" id = "intercessions">
-					<h3>Evening Intercessions</h3>
-						<p class="instruction">All now kneel again.</p>
-						<div class = "section">
-							<h4>For the Intentions of the Pope</h4>
-							<p>The Most Holy Father Francis has instructed us during this month of <span id = "monthline"></span> in the <span id = "yearline"></span> year of our Lord to pray for <span id = "intentionline"></span>: that <span id= "prayerline"></span>. Let us pray:</p>
-							<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-							R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-							<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-						</div>
-						<div class="section">
-							<h4>For the Holy Church</h4>
-							<p>Almighty and everlasting God, Who in our Christ has revealed Thy glory to all nations, we beseech Thee to guard Thy Church, to keep Her in peace and unity, and to subject all powers and principalities to Her authority, that Thy Church spread throughout the world may preserve unencumbered in the confession of Thy Name and of Thy great works. Let us pray:</p>
-							<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-							R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-							<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-						</div>
-						<div class="section">
-							<h4>For the Supreme Pontiff</h4>
-							<p>Almighty and everlasting God, by Whose judgment all things are established, mercifully regard the prayers of Thy people, and in Thy goodness especially hear the prayers of our Most Holy Father Francis, for his own intentions, and for the whole world of Thy Creation to be united under his authority in perfect obedience to Thee. Let us pray:</p>
-							<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-							R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-							<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-						</div>
-						<div class="section">
-							<h4>For all Orders and Grades of the Faithful</h4>
-							<p>Almighty and everlasting God, by Whose Spirit the whole congregation of the Church is sanctified, hear our humble plea for all orders: for all bishops, priests, deacons, confessors, virgins, catechists, and all the holy people of God; that by the gift of Thy grace all may faithfully serve Thee. Let us pray:</p>
-							<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-							R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-							<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-						</div>
-						<div class="section">
-							<h4>For the Leaders of the Lands</h4>
-							<p>Almighty and everlasting God, in Whose hands dwell all power, grant Thy grace unto those who wield power over us, and let Thy right hand protect us, that the integrity of Thy Church may be firmly based. Let us pray:</p>
-							<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-							R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-							<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-						</div>
-						<div class="section">
-							<h4>For Catechumens</h4>
-							<p>Almighty and everlasting God, Who ever makes Thy Church fruitful with new offspring, increase the faith and understanding of our catechumens, and all those raised by Christian parents, that being born from the font of baptism, they may worthily be called Thy children. Let us pray:</p>
-							<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-							R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-							<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-						</div>
-					<div class="section">
-						<h4>For the Needs of the Faithful</h4>
-						<p>Almighty and everlasting God, the comfort of all the afflicted and sorrowful, and the strength of those who labor: hasten the prayers of all those who call upon Thee in trouble, that all may rejoice in their necessities Thy mercy has given them, that Thou would cleanse the world of all errors: take away disease, drive away famine, open prisons, break chains, and grant safe return to travelers and health to the sick. Let us pray:</p>
-						<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-						R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-					</div>
-					<div class="section">
-						<h4>For the Unity of the Church</h4>
-						<p>Almighty and everlasting God, Who saves all men, and wills that no man perish, look upon the souls led astray by the deceit of the Devil, that having set aside all heretical evil, their hearts may repent of their errors, and return to the unity of Thy truth in our holy Mother and Teacher, Thy Church. Let us pray:</p>
-						<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-						R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-					</div>
-					<div class="section">
-						<h4>For the Conversion of Jews</h4>
-						<p>Almighty and everlasting God, Who wishes all men to be saved, illuminate the hearts of the Jews, that they may acknowledge the light of Thy truth, which is Christ, and be rescued from their darkness. Let us pray:</p>
-						<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-						R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-					</div>
-					<div class="section">
-						<h4>For the Conversion of Unbelievers</h4>
-						<p>Almighty and everlasting God, Who seeks not the death of sinners, but their life, mercifully grant unto those who have not heard Thy Name and who do not know Thy great works the grace to renounce their false idols, to repent of their sins, and to convert to the true God. Let us pray:</p>
-						<p>V. Our Father, Who art in heaven: hallowed be Thy Name. Thy kingdom come. Thy will be done on earth as it is in heaven.<br/>
-						R. Give us this day our daily bread, and forgive us our trespasses: as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.</p>
-						<p>V. Hail Mary full of grace, the Lord is with thee. Blessed are thou among women, and blessed is the fruit of thy womb, Jesus.<br/>R. Holy Mary, Mother of God, pray for us sinners now and at the hour of our death. Amen.</p>
-					</div>
-				</div>
-				<div class = "section">
-					<h3>Dismissal</h3>
-					<p class="verse" id="dismisal_verse"></p>
-					<p id="dismisal"></p>
-					<p class="verse">Deuteronomy 6:4-7</p>
-					<p>Now hear, Israel: the Lord is our God and the Lord alone. And thou shall love the Lord thy God with all thy heart and with all thy being and with all thy might. And these words that I charge thee today with shall be upon thy heart. And thou shall impress them unto thy sons and speak of them when thou sits in thy house and when thou goes on the way and when thou lies down and when thou rises.</p>
-				</div>
-				<div class="section">
-					<h3>Divine Praises</h3>
-					<p class="instruction">If the people are not already kneeling, they do so now.</p>
-					<p>Blessed be God. Blessed be His Holy Name. Blessed be Jesus <span class="verse">&#10016;</span> Christ, true God and true Man. Blessed be the Name <span class="verse">&#10016;</span> of Jesus. Blessed be His Most Sacred Heart. Blessed be His Most Precious Blood. Blessed be Jesus <span class="verse">&#10016;</span> in the Most Holy Sacrament. Blessed be the Holy Spirit. Blessed be the great Mother of God, Mary most Holy. Blessed be her Holy and Immaculate Conception. Blessed be her Glorious Assumption. Blessed be the name of Mary, Virgin and Mother. Blessed be Saint Joseph, her most chaste Spouse. Blessed be God in His Angels and in His Saints. Amen.</p>
-				</div>
+				<h2>Beatitudes</h2>
+				<p>
+					<span class="verse" id="beatitudes_verse"></span><br/>
+					<span id="beatitudes"></span>
+					<!-- A reading from Psalm 119 -->
+				</p>
+				<p>
+					<span class="verse">V.</span> Blessed are the meek: <br/><span class="verse">R. </span> for they will inherit the land.<br/>
+					<span class="verse">V.</span> Blessed are the merciful: <br/><span class="verse">R. </span> for they will be shown mercy.<br/>
+					<span class="verse">V.</span> Blessed are the clean in heart: <br/><span class="verse">R. </span> for they will see God.<br/>
+					<span class="verse">V.</span> Blessed are the peacemakers: <br/><span class="verse">R. </span> for they will be called children of God.<br/>
+					<span class="verse">V.</span> Blessed are they who hunger and thirst for righteousness: <br/><span class="verse">R. </span> for they will be satisfied.<br/>
+					<span class="verse">V.</span> Blessed are they who are persecuted for the sake of righteousness: <br/><span class="verse">R. </span> for theirs is the kingdom of heaven.
+				</p>
+				<p>
+					<span class="verse">V.</span> Woe to thee who is rich: <br/><span class="verse">R. </span> for thou have already received thy comfort.<br/>
+					<span class="verse">V.</span> Woe to thee who is fed well: <br/><span class="verse">R. </span> for thou will go hungry.<br/>
+					<span class="verse">V.</span> Woe to thee who laughs now: <br/><span class="verse">R. </span> for thou will mourn and weep.<br/>
+					<span class="verse">V.</span> Woe to thee when all speak well of thee: <br/><span class="verse">R. </span> for this is how their ancestors treated the false prophets.
+				</p>
+			</div>
+			<div class="section">
+				<h2>Thrice-holy Hymn</h2>
+				<p>
+					<span class="verse">V.</span> O holy God, O holy and mighty Lord, O holy and immortal Christ:<br/>
+					<span class="verse">R.</span> Have mercy on us.
+				</p>
+				<p>
+					<span class="verse">V.</span> O holy God, O holy and mighty Lord, O holy and immortal Christ:<br/>
+					<span class="verse">R.</span> Have mercy on us.
+				</p><p>
+					<span class="verse">V.</span> O holy God, O holy and mighty Lord, O holy and immortal Christ:<br/>
+					<span class="verse">R.</span> Have mercy on us.
+				</p>
+				<p>
+					Glory be to God on high, and on earth peace to men of goodwill. We praise Thee. We bless Thee. We adore Thee. We glorify Thee. We give Thee thanks for Thy great glory. O Lord God, heavenly King, God the Father almighty. O Lord Jesus Christ, the only-Begotten Son. O Lord God, Lamb of God, Son of the Father. Thou take away the sins of the earth: have mercy on us. Thou take away the sins of the world: receive our prayer. Thou are seated at the right hand of the Father: have mercy on us. For Thou alone are holy. Thou alone are the Lord. Thou alone are the most high, O Jesus Christ: together with the Holy Spirit in the glory of God the Father. Amen.
+
+				</p>
+			</div>
+			<div class="section" id="memorials">
+			</div>
+			<div class="section">
+				<h2>Collect</h2>
+				<p>
+					Let us pray:<br/>
+					<span id="collect"></span> For Thine is the kingdom, the power, and the glory: now and for all ages of ages. Amen.
+				</p>
+			</div>
+			<div class="section" id = "readings">
+				<h2>Readings</h2>
+			</div>
+			<div class="section">
+				<h2>Hymn of the Cherubim</h2>
+				<p>
+					Let us represent the Cherubim in mystic harmony, praising God the Father, the Son, and the Holy Spirit, raising our prayers in praise of the Holy Trinity. Let us cast aside all this earthly life that we may receive the King of all in our hearts: He who will enter in the world with mighty hosts of Angels. Alleluia.
+				</p>
+			</div>
+			<div class="section">
+				<h2>Intercessions</h2>
+				<p>
+					Let us pray:<br/>
+					O Thou who has grant us at this time with one voice to pray, and has promised to two or three calling together on Thy Name to grant their requests: do Thou now fulfill to our advantage the requests of Thy servants: granting us in the present the knowledge of Thy truth, and in the future bestowing us life everlasting. For Thine is the strength and Thine is the kingdom, the power, and the glory: now and for all ages of ages. Amen.
+				</p>
+				<p>
+					For our Most Holy Father Francis, for the whole world of Thy creation to be united under his authority in perfect obedience to Thee:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+				<p>
+					For his intentions, especially for <span id="pope_intention"></span>, that <span id="pope_prayer"></span>:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+				<p>
+					For our pious bishop Edward and the entire priesthood of the Lord Jesus Christ:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+				<p>
+					For the holy Church to be kept in peace and unity, and for all powers and principalities to be subject to her authority, that she may preserve unencumbered in the confession of Thy works:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+				<p>
+					For the whole congregation of the Church to be sanctified by Thy life-giving Spirit: for all bishops, priests, deacons, confessors, virgins, catechists, and all the holy people of God to faithfully serve Thee:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+				<p>
+					For those who wield power over us: we beg Thy right hand to protect us, that the integrity of Thy Church may be firmly based:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+				<p>
+					For catechumens, for their understanding to be increased, and for all Christian children, that born from the font of baptism they may be worthily called Thy children:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+				<p>
+					For the needs of the faithful, that the prayers of all those who call upon Thee in trouble may be hastened, that all may rejoice in their necessities Thy mercy has given them, and that Thou would cleanse the world of all errors, to take away disease, drive away famine, open prisons, break chains, and grant safe return to travelers and health to the sick:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+				<p>
+					For those led astray by the deceit of the Devil, that having set aside all heretical evil, their hearts may repent of their errors and return to the unity of Thy truth in our holy Mother and Teach, Thy Church:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+				<p>
+					For the Jews, for their hearts to be illuminated to profess the light of Thy truth in Christ, and be rescued from their darkness:<br/>
+					<span class="verse">R.</span> Lord, have mercy.<br/>
+					<span class="verse">V.</span> Christ, have mercy.<br/>
+					<span class="verse">R.</span> Lord, have mercy.
+				</p>
+			</div>
+			<div class="section">
+				<h2>Collect for Grace</h2>
+				<p>
+					Again and often we fall down before Thee and beg of Thee that Thou would cleanse our souls and bodies from all pollution of sin, and that Thou would vouchsafe for us to stand blameless and uncondemned before Thee on the last day.  Grant, O God, unto us and those we pray for an increase of faith, of life, and of knowledge of Thee, and vouchsafe unto us, ever with fear and love, to serve Thee perfectly, and to be made worthy of Thy heavenly kingdom.
+				</p>
+				<p>
+					Let us pray:<br/>
+					O Lord our God, we have erred and strated from Thy ways. We have followed the devices and desires of our own hearts. We have offended against Thy holy laws. But Thou, O Lord, desires not the death of a sinner, but his life. A contrite and sorrowful heart Thou will never despise. Informed by the teaching of Thy divine Son, we are bold to say:
+				</p>
+				<p>
+					<span class="verse">V.</span> Our Father, who art in heaven. Hallowed be Thy Name. Thy kingdom come. Thy will be done, on earth as it is in heaven.<br/>
+					<span class="verse">R.</span> Give us this day our daily bread. And forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation: but deliver us from evil.
+				</p>
+				<p>
+					I confess to almighty God, to blessed Mary ever-Virgin, to blessed Michael the Archangel, to blessed John the Baptist, to the holy Apostles Peter and Paul, to all the Saints, and to you, brothers: I have greatly sinned in thought, word, and deed: through my fault, through my fault, through my most grievous fault. Therefore I beg of blessed Mary ever-Virgin, blessed Michael the Archangel, blessed John the Baptist, the holy Apostles Peter and Paul, all the Saints, and you, brothers, to pray for me to the Lord our God.
+				</p>
+				<p>May the almighty God have mercy on us, forgive us our sins, and bring us to everlasting life. And may the almighty and merciful Lord grant us every pardon, absolution, and remission of all our sins.</p>
+				<p>
+					<span class="verse">V.</span> Lord Jesus Christ, Son of the living God:<br/>
+					<span class="verse">R.</span> Have mercy on me, a sinner.
+				</p>
+			</div>
+			<div class="section">
+				<h2>Symbol of Faith</h2>
+				<p>
+					I believe in one God: the Father almighty, maker of heaven and earth, of all things visible and invisible. And in one Lord Jesus Christ, the only-Begotten Son of God. Born of the Father before all ages. God of God, Light of Light, very God of very God. Begotten, not made, of one substance with the Father: by whom all things were made. Who for us men and for our salvation came down from heaven. <span class="verse">(kneel)</span> And was incarnate by the Holy Spirit of the Virgin Mary: and was made man. <span class="verse">(arise)</span> He was crucified also for us: under Pontius Pilate he suffered, and was buried. And he was resurrected on the third day, as according to the Scriptures. And he ascended into heaven: he is seated at the right hand of the Father. And he will come again with glory to judge the living and the dead: whose kingdom shall have no end. And in the Holy Spirit, the Lord and giver of life: who proceeds from the Father and the Son. Who with the Father and Son together is adored and co-glorified: who spoke by the Prophets. As by the one holy, catholic, and apostolic Church. I confess one baptism for the forgiveness of sins. And I await the resurrection of the dead and the life of the world to come. Amen.
+				</p>
+			</div>
+			<div class="section">
+				<h2>Collect for Communion</h2>
+				<p>
+					Let us pray:<br/>
+					Lord Jesus Christ, our God, from Thy holy dwelling, from the throne of the glory of Thy kingdom, come to sanctify us, Thou who sits above with the Father, and make us worthy to partake of Thy immaculate Body and Thy precious Blood. We believe, O Lord, and confess that Thou are the true Christ, the Son of the living God who came into the world to save sinners. We believe that Thy Body and Blood, offered up and shed for us upon Thy Cross, is made present again in the Most Holy Sacrament.
+				</p>
+				<p>
+					Remember me this day, O Lord, not like a traitor as Judas with his kiss, but like the thief who confessed unto Thee. Let me not be separated from Thee, and on my last day welcome me into Thy kingdom.
+				</p>
+				<p>
+					O Christ, great and priestly Paschal Lamb, Wisdom, Word, and power of God: grant that we may come to have a more intimate communion with Thee in the day of Thy kingdom that knows no night. Amen.
+				</p>
+			</div>
+			<div class="section">
+				<h2>Conclusion</h2>
+				<p>
+					We kneel before Thy Cross, O Christ, and we praise and glorify Thy holy Resurrection. For Thou are our God and besides Thee we know no other, and we call upon Thy Name. Come, all ye faithful, let us worship the Resurrection of Christ, and behold: through the Cross joy has come to the whole world. At all times blessing the Lord, we praise His Resurrection, for having endured the Cross for us, He has overcome death by death. Shine out, new Jerusalem, for the glory of the Lord is spread abroad over thee: rejoice and be glad.
+				</p>
+				<p>
+					Let us pray:<br/>
+					<span id="concluding_collect"></span> For Thine is the strength and Thine is the kingdom, the power, and the glory: now and for all ages of ages. Amen.
+				</p>
+			</div>
+			<div class="section">
+				<h2>Dismissal</h2>
+				<p>
+					<span class="verse" id="dismissal_verse"></span>
+					<span id="dismissal"></span>
+				</p>
+				<p>
+					<span class="verse">Deuteronomy 6:4-7</span><br/>
+					Now hear, Israel: the Lord is our God and the Lord alone. And thou shall love the Lord thy God with all thy heart and with all thy being and with all thy might. And these words that I charge thee today with shall be upon thy heart. And thou shall impress them unto thy sons and speak of them when thou sits in thy house and when thou goes on the way and when thou lies down and when thou rises.
+				</p>
+			</div>
+			<div class="section">
+				<h2>Divine Praises</h2>
+				<p>
+					Blessed be God. Blessed be His Holy Name. Blessed be Jesus Christ, true God and true Man. Blessed be the Name of Jesus. Blessed be His Most Sacred Heart. Blessed be His Most Precious Blood. Blessed be Jesus in the Most Holy Sacrament. Blessed be the Holy Spirit. Blessed be the great Mother of God, Mary most Holy. Blessed be her Holy and Immaculate Conception. Blessed be her Glorious Assumption. Blessed be the name of Mary, Virgin and Mother. Blessed be Saint Joseph, her most chaste Spouse. Blessed be God in His Angels and in His Saints. Amen.
+				</p>
 			</div>
 		</div>
 		<script>
@@ -781,10 +802,6 @@
 			
 			let morning = hour < 15;
 			document.getElementById("timeline").innerHTML = morning? "Morning Prayer" : "Evening Prayer";
-			if (morning) {
-				document.getElementById("martyrology").style.display = "none";
-				document.getElementById("intercessions").style.display = "none";
-			}
 			
 			todayDate = dateOfDay(todayDay);
 			
@@ -799,13 +816,12 @@
 			getYaml("calendar.yml", function(data) {
 				let intention = data.pope[month - 1][0];
 				let prayer = data.pope[month - 1][1];
-				document.getElementById("intentionline").innerHTML = intention;
-				document.getElementById("prayerline").innerHTML = prayer;
-				document.getElementById("monthline").innerHTML = monthTable[month - 1];
+				document.getElementById("pope_intention").innerHTML = intention;
+				document.getElementById("pope_prayer").innerHTML = prayer;
 
 				if (data.dismissal[todayDate.getDay()] != null) {
-					document.getElementById("dismisal_verse").innerHTML = data.dismissal[todayDate.getDay()].verse;
-					document.getElementById("dismisal").innerHTML = getNewlineReplacement(data.dismissal[todayDate.getDay()].text);
+					document.getElementById("dismissal_verse").innerHTML = data.dismissal[todayDate.getDay()].verse + "<br/>";
+					document.getElementById("dismissal").innerHTML = getNewlineReplacement(data.dismissal[todayDate.getDay()].text);
 				}
 				
 				let office = morning? "morning" : "evening";
@@ -816,10 +832,7 @@
 					});
 				};
 				
-				f("exhortation", data.psalms[dayOfWeek][office].exhortation);
-				f("call", data.psalms[dayOfWeek][office].call);
-				f("gradual", data.psalms[dayOfWeek][office].gradual);
-				f("sapiental", data.psalms[dayOfWeek][office].sapiental);
+				f("beatitudes", data.psalms[dayOfWeek][office].exhortation);
 			});
 			
 			let dayIdParts = dayId.split("-");
@@ -828,13 +841,13 @@
 				document.getElementById("dateline").innerHTML = data.name;
 				
 				let office = morning? "morning" : "evening";
-				document.getElementById("reading1_verse").innerHTML = data[office].readings[0].verse;
+				/*document.getElementById("reading1_verse").innerHTML = data[office].readings[0].verse;
 				document.getElementById("reading2_verse").innerHTML = data[office].readings[1].verse;
 				document.getElementById("reading3_verse").innerHTML = data[office].readings[2].verse.replaceAll("\n","<br/>");
 				
 				document.getElementById("reading1").innerHTML = getNewlineReplacement(data[office].readings[0].text);
 				document.getElementById("reading2").innerHTML = getNewlineReplacement(data[office].readings[1].text);
-				document.getElementById("reading3").innerHTML = getNewlineReplacement(data[office].readings[2].text);
+				document.getElementById("reading3").innerHTML = getNewlineReplacement(data[office].readings[2].text);*/
 				
 				let fromWeek = {};
 				if ("collect" in data) {
@@ -864,21 +877,23 @@
 				getYaml("calendar/" + dayIdParts[0].toLowerCase() + "/" + dayIdParts[1] + "/week.yml", function(weekData){
 					console.log(weekData);
 					if ("collect" in fromWeek) {
-						document.getElementById("collect1_verse").innerHTML = weekData.collect[0].verse;
-						document.getElementById("collect1").innerHTML = getNewlineReplacement(weekData.collect[0].text);
+						document.getElementById("antiphonary_1_verse").innerHTML = weekData.collect[0].verse;
+						document.getElementById("antiphonary_1").innerHTML = getNewlineReplacement(weekData.collect[0].text);
 						
-						document.getElementById("collect2_verse").innerHTML = weekData.collect[1].verse;
-						document.getElementById("collect2").innerHTML = getNewlineReplacement(weekData.collect[1].text);
+						document.getElementById("antiphonary_2_verse").innerHTML = weekData.collect[1].verse;
+						document.getElementById("antiphonary_2").innerHTML = getNewlineReplacement(weekData.collect[1].text);
 						
-						document.getElementById("collect3_verse").innerHTML = weekData.collect[2].verse;
-						document.getElementById("collect3").innerHTML = getNewlineReplacement(weekData.collect[2].text);
+						document.getElementById("antiphonary_3_verse").innerHTML = weekData.collect[2].verse;
+						document.getElementById("antiphonary_3").innerHTML = getNewlineReplacement(weekData.collect[2].text);
 					}
 					
 					if ("oration" in fromWeek) {
-						document.getElementById("oration").innerHTML = getNewlineReplacement(weekData.oration);
+						document.getElementById("collect").innerHTML = getNewlineReplacement(weekData.oration);
 					}
 				});
 			});
+			
+			
 			
 			if (window.screen.width > 800) {
 				document.getElementById("rule").style.fontSize = "2.5vh";
