@@ -13,10 +13,10 @@ pope: # Intentions of the Pope
     - those who risk their lives while fighting for fundamental rights under dictatorships, authoritarian regimes, and even in democracies in crisis may have God as their Protector
   -
     - the world of finance
-    - those in charge of finance will work with governments to regulate the financial sphere and protect citizens from its dangers.
+    - those in charge of finance will work with governments to regulate the financial sphere and protect citizens from its dangers
   -
     - the beauty of marriage
-    - young people who are preparing for marriage with the support of a Christian community may grow in love, with generosity, faithfulness and patience.
+    - young people who are preparing for marriage with the support of a Christian community may grow in love, with generosity, faithfulness and patience
   -
     - social friendship
     - in social, economic, and political situations of conflict, we may be courageous and passionate architects of dialogue and friendship
@@ -45,7 +45,7 @@ dismissal:
     text: God has destined us not for wrath but for obtaining salvation through our Lord Jesus Christ Who died for us, so that whether we are awake or asleep we may live with Him.
   -
     verse: 1 Peter 5:8-9
-    text: Discipline thyselves and keep alert. Like a roaring lion thy adversary the Devil prowls around, looking for someone to devour. Resist him, steadfast in thy faith, for thou knows that thy brothers and sisters in all the world are undergoing the same kinds of suffering.
+    text: Discipline thyself and keep alert. Like a roaring lion thy adversary the Devil prowls around, looking for someone to devour. Resist him, steadfast in thy faith, for thou knows that thy brothers and sisters in all the world are undergoing the same kinds of suffering.
   -
     verse: 1 Thessalonians 5:23
     text: "May the God of peace Himself sanctify thee entirely: and may thy spirit and soul and body be kept sound and blameless at the coming of our Lord Jesus Christ."
@@ -62,77 +62,89 @@ psalms: # The Office of Psalms
   - # Sunday
     morning:
       exhortation: 119:1-24
-      call: 24
-      gradual: 125
-      sapiental: 1
     evening:
       exhortation: 119:25-40
-      call: 134
-      gradual: 121
-      sapiental: 36
   - # monday
     morning:
       exhortation: 119:41-48
-      call: 15
-      gradual: 126
-      sapiental: 112
     evening:
       exhortation: 119:49-64
-      call: 134
-      gradual: 128
-      sapiental: 73
   - # tuesday
     morning:
       exhortation: 119:65-72
-      call: 95
-      gradual: 130
-      sapiental: 127
     evening:
       exhortation: 119:73-88
-      call: 134
-      gradual: 129
-      sapiental: 37
   - # wednesday
     morning:
       exhortation: 119:89-96
-      call: 68
-      gradual: 132
-      sapiental: 46
     evening:
       exhortation: 119:97-104
-      call: 134
-      gradual: 131
-      sapiental: 36
   - # thursdday
     morning:
       exhortation: 119:105-112
-      call: 82
-      gradual: 122
-      sapiental: 112
     evening:
       exhortation: 119:113-120
-      call: 134
-      gradual: 120
-      sapiental: 73
   - # friday
     morning:
       exhortation: 119:121-136
-      call: 95
-      gradual: 123
-      sapiental: 127
     evening:
       exhortation: 119:137-152
-      call: 134
-      gradual: 124
-      sapiental: 37
   - # saturday
     morning:
       exhortation: 119:153-168
-      call: 115
-      gradual: 130
-      sapiental: 46
     evening:
       exhortation: 119:169-176
-      call: 134
-      gradual: 133
-      sapiental: 1
+memorial:
+  - # sunday, no special
+  - # monday
+    name: Memorial of the Holy Trinity
+    collects:
+      - "Almighty and everlasting God, who has enabled Thy servants in confessing the true faith to acknowledge the glory of the eternal Trinity, and in the power of Majesty to adore its Unity: we beg of Thee, that by steadfastness in the same Faith, we may ever be defended against all adversity."
+      - "O Lord our God, may our prayers in praise of the Holy and Eternal Trinity and its undivided Unity be of avail to us for health of mind and body."
+    tropes:
+      - "We fall down before Thee, O Blessed Trinity, and sing to Thee, O Mighty God, the Angelic hymn: \"Holy, holy, Lord God of Sabaoth. Thou has raised me from death: O Lord, enlighten my mind and heart, and open my lips that I pay praise Thee, O Holy Trinity."
+      - "O consubstantial and indivisible Trinity, tri-Personed and ever co-existent Unity, to Thee as God we cry the Angelic hmyn: \"Holy, holy, holy Lord God of Sabaoth.\" The unoriginate Father, the co-unoriginate Son, the ever co-existent Spirit, one Divinity: through the intercession of all Thy Saints have mercy on us."
+  - # tuesday
+    name: Memorial of the Holy Angels
+    collects:
+      - "O God, who has constituted the services of Angels and of men in a wonderful order, mercifully grant, that they who ever stand before Thy face to do Thee service in heaven, may also defend our life upon earth."
+      - "We who are filled with every heavenly blessing humbly beg of Thee, O Lord, that our imperfect worship may be profitable unto our salvation by the help of Thy holy Angels."
+    tropes:
+      - "O leaders of the heavenly armies, though we are unworthy, we beg of you that with your prayers you may encircle us with the protection of the wings of your Angelic glory. Watch over us as we earnesty cry out to you: \"Deliver us from trouble, O princes of the heavenly armies."
+      - "O princes of the armies of God, and servants of the Divine Glory, guardians of human creatures and leaders of the heavenly hosts, intercede for us that we may obtain what is good for us, and seek abundant mercy for us, for you are the princes of heaven."
+  - #wednesday
+    name: Memorial of Saint Joseph
+    collects:
+      - "O God, who in Thy unspeakable providence did vouchsafe to choose blessed Joseph for Thy most holy Mother's spouse: grant, we beg of Thee, that we who revere him as our protector upon earth may be worthy to have him as our intercessor in heaven."
+      - "We who have been refreshed at the fountain of divine blessed beg of Thee, O Lord our God, that as Thou gladdens us by the protection of blessed Joseph, so by his merits and intercession Thou would make us partakers of everlasting joy."
+  - # thurdday
+    name: Memorial of All Souls
+    collects: 
+      - "O God, the Creator and Redeemer of the faithful: grant to the souls of Thy servants and handmaidens the remission of all their sins: that through pious supplications, they may obtain that pardon which they have always desired."
+      - "May the prayer of Thy supplicant people, we beg of The, O Lord, avail the souls of Thy servants and handmaidens: that Thou may deliver them from all their sins and give them a share in Thy Redemption."
+    tropes:
+      - "O gracious Lord, remember Thy servants and forgive every sin that they have committed in their life: for Thou has the power to grant rest to the departed."
+      - "With the Saints, O Christ, give rest of Thy servants where there is no pain, sorrow, nor mourning, but life everlasting."
+  - # friday
+    name: Memorial of the Holy Cross
+      collects:
+        - "O Lord Jesus Christ, who came down to earth from the bosom of Thy heavenly Father, and shed Thy precious Blood to wash away our sins: we humbly beg of Thee, that on the judgment day, at Thy right hand, we may be found worthy to hear from Thee those words: \"Come, ye blessed.\""
+        - "O Lord Jesus Christ, Son of the living God, who at the sixth hour mounted the gibbet of the Cross for the redemption of the world, and shed Thy precious Blood that our sins might be washed away: we humbly beg of Thee that after our death Thou would grant us joyful entry to the fgates of heaven."
+      tropes:
+        - "Save Thy people, O Lord, and bless Thy inheritance: grant victory to Thy Church over her enemies, and protect Thy people by Thy holy Cross."
+        - "Willing raised on the Cross, O Christ our God, Thou bestowed Thy mercies upon a new people bearing Thy Name. With Thy power, grant joy to us, give us victory over our enemies, with the invincible standard, Thy weapons of peace and forgiveness, as an ally.
+  - # saturday
+    name: Memorial of the Blessed Virgin Mary
+      collects:
+        advent:
+          - "O God, who was pleased that, at the message of an Angel, Thy Word should take flesh in the womb of the Blessed Virgin Mary, grant to us Thy supplicants, that we who believe her to be truly the Mother of God, may be helped by her intercession with Thee."
+          - "Pur forth, we beg of Thee, O Lord, Thy grace into our hearts: that we, to whom the Incarnation of Thy Son, was made known by the message of an Angel, may by His Passion and Cross be brought to the glory of the Resurrection."
+        christmas:
+          - "O God, who by the fruitful virginity of blessed Mary has bestowed upon mankind the rewards of eternal salvation: grant, we beg of Thee, that we may experience her intercession for us, through whom we have been made worthy to receive the author of life, Jesus Christ, Thy Son, our Lord."
+          - "May we be cleansed from all guilt, O Lord, through the intercession of the Blessed Virgin Mary, Mother of God, and granted a share of the heavenly remedy."
+        purification:
+          - "Grant to us Thy servants, we beg of Thee, O Lord our God, that we may enjoy perpetual health of mind and body, and through the intercession of blessed Mary ever-Virgin may be delivered from present sorrow and possess eternal joy."
+          - "O Lord, grant, we beg of Thee, that we who have received every aid unto salvation, may be always and everywhere protected by the intercession of blessed Mary ever-Virgin."
+      tropes:
+        - "Lowly sinners are we, let us now flee in earnest to the Mother of God. In sorrow let us now fall down before her, crying from the dephths of our souls: \"Take pits on us, O Lady, and help us. Hurry to our aid, for we are perishing from the enormity of our sins. Send us not away empty-handed, for thou are the only hope we have.\""
+        - "Except for thee, we have no hope, no help. Help us, pure Virgin, for we hope in thee. We boast of thee, since we are thy servants. Do not let us be ashamed."
