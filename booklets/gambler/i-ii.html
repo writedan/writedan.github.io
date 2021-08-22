@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<style>
+			#rule {
+				width: 8.5in;
+				padding: 2vw;
+			}
+
+			.section {
+				padding: 15px;
+				border: 1px solid;
+			}
+
+			.v {
+				color: red;
+				font-size: 0.75em;
+				margin-bottom: 0;
+			}
+
+			.v + p {
+				margin-top: 0;
+			}
+
+			br {
+				margin-bottom: 0.5vh;
+			}
+
+			.small {
+				font-variant: small-caps;
+			}
+
+			h1 + .para {
+				margin-bottom: 0;
+			}
+
+			.para {
+				margin-top: 0;
+				position: relative;
+				left: 0px;
+			}
+		</style>
+		<style>
+			article {
+			  counter-reset: footnotes;
+			}
+
+			footnote {
+			  text-decoration: none; /* 2 */
+			  color: inherit; /* 2 */
+			  cursor: default; /* 2 */
+			  outline: none; /* 2 */
+			}
+
+			footnote {
+			  content: '[' counter(footnotes) ']'; /* 1 */
+			  vertical-align: super; /* 2 */
+			  font-size: 0.5em; /* 3 */
+			  margin-left: 2px; /* 4 */
+			}
+
+			footnote {
+			  outline: thin dotted;
+			  outline-offset: 2px;
+			}
+
+			body {
+			}
+		</style>
+	</head>
+	<body>
+		<div id="rule">
+			<h1><a href="index.html">Reform of the Roman Liturgy</a></h1>
+			<h2>Its Background and Problems</h2>
+			<h3>The Debacle of Modern Liturgy</h3>
+		</div>
+	</body>
+</html>
