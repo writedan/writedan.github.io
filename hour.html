@@ -1,0 +1,129 @@
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    var GLORIA_DIALOGUE = ["Glory be to the Father and to the Son and to the Holy Spirit.", "As it was in the beginning is now, and ever shall be, unto the ages of ages. Amen."]; // all souls day transforms to Requiem.
+    function dialogue(a) {
+      var p = $('<p/>');
+      for (var i = 0; i < a.length; i+= 2) {
+        var v = a[i];
+        var r = a[i + 1];
+        p.append(
+          $('<span/>', {
+            html: "V. ",
+            class: 'v'
+          }),
+          $('<span/>', {
+            html: v
+          })
+        );
+        p.append($('<br/>'));
+        p.append(
+          $('<span/>', {
+            html: "R. ",
+            class: 'v'
+          }),
+          $('<span/>', {
+            html: r
+          })
+        );
+        p.append($('<br/>'))
+      }
+      p.children().last().remove();
+      return p;
+    }
+
+    function gloria() {
+      return dialogue(GLORIA_DIALOGUE);
+    }
+
+    function psalm(num, antiphon, solemn) {
+      var text = ['Have mercy on me, O God, according to thy great mercy.', 'And according to the multitude of thy tender mercies, blot out my iniquity.']; // TODO: get psalm texts
+      var div = $('<div/>', {id: 'psalm_' + num});
+      div.append($('<h3/>').html('Psalm ' + num));
+      if (antiphon != null) div.append($('<p/>').append($('<span/>').html('Ant. ').attr('class', 'v')).append($('<span/>').html(antiphon)));
+      var p = $('<p/>');
+      for (var i = 0; i < text.length; i++) {
+        var verse = i + 1;
+        if (!solemn) p.append($('<span/>').html(verse + " ").attr('class', 'v'));
+        p.append($('<span/>').html(text[i])); // TODO: turn into table
+        p.append($('<br/>'));
+        if (solemn) {
+          p.append($('<span/>').append($('<span/>').html('Ant. ').attr('class', 'v')).append($('<span/>').html(antiphon)));
+          p.append($('<br/>'));
+        }
+      }
+      p.children().last().remove();
+      gloria().appendTo(p);
+      p.appendTo(div);
+    //  if (antiphon != null) div.append($('<p/>').append($('<span/>').html('Ant. ').attr('class', 'v')).append($('<span/>').html(antiphon)));
+      return div;
+    }
+
+    function generalIncipit(solemn) {
+      /*var div = document.createElement('div');
+      div.appendChild(document.createElement('h2')).innerHTML='Invitatory';
+      var p1 = div.appendChild(document.createElement('p'));
+      p1.appendChild(document.createElement('span')).html('V.');
+      return div;*/
+      var div = $('<div/>', {id: 'incipit'});
+      div.append($('<h2/>').html('Invitatory'));
+      div.append(dialogue(["O Lord, open thou my lips.", "And my mouth shall declare thy praise.", "O God " + cross() + ", come to my assistance.", "O Lord, make haste to help me."]));
+      div.append(dialogue(["Glory be to the Father and to the Son and to the Holy Spirit.", "As it was in the beginning is now, and ever shall be, unto the ages of ages. Amen."]));
+      if (solemn) div.append($("<p/>").html('Alleluia.'));
+      console.log(div);
+      return div;
+    }
+
+    function cross() {
+      return '<span class =\'v\'>&#9769;</span>';
+    }
+
+    function section(title) {
+      var div = $('<div/>');
+      $('<h2/>').html(title).appendTo(div);
+      return div;
+    }
+
+    function generalConclusion() {
+      var div = $('<div/>').attr('id','conclusion');
+      $('<h2/>').html('Conclusion').appendTo(div);
+      dialogue(['Let us bless the Lord.', 'And give him thanks.']).appendTo(div);
+      div.append($('<p/>').attr('id','final_collect').html('Let us pray.').append('<br/>').append($('<span/>').html('This offering of our service we beg of Thee, O Lord, graciously to accept, and to dispose our days in thy peace, and to command us to be delivered from eternal damnation, and to be numbered in the flock of thine elect, with the aid of the gracious intercession of Mary, glorious Virgin and Mother, who thou prepared in body and soul to be a worthy dwelling for thy Son. Through the same Christ our Lord. Amen.')));
+      // O almighty, everlasting God, who by the cooperation of the Holy Spirit, didst prepare the body and soul of Mary, glorious Virgin and Mother, to become a worthy dwelling for thy Son: grant tha t we who rejoice in her commemoration may, by her gracious intercession, be delivered from present evils and from everlasting death. Through the same Christ our Lord. Amen.
+      dialogue(['May the souls of the faithful, through the mercy of God, rest in peace.', 'Amen.']).appendTo(div);
+      dialogue(['May the divine assistance ' + cross() + ' remain with us always.', 'And with our brethren who are absent. Amen.']).attr('id','divinum').appendTo(div);
+      return div;
+    }
+
+    function generalIntroduction() {
+      var div = section('Incipit');
+      $('<p/>').html('In communion with and honoring the memory, especially of the blessed and glorious ever-Virgin Mary, the Mother of God, as with blessed Joseph her spouse, with blessed Michael the Archangel, blessed John the Baptist, with the holy Apostles Peter and Paul, Andrew, John, James, Philip, Bartholomew, Matthew, James, Thomas, Simon, and Jude, and all the Saints, we offer these hours unto thee as thou didst thyself praise God whilst thou wast on earth. By their merits and prayers grant, O Lord, to cleanse our hearts from all vain, evil, and wandering thoughts, to enlighten our understanding and to kindle our affection, that we may pray to and praise thee with attention and devotion, and may be worthily heard before thy divine majesty.').appendTo(div);
+      dialogue(['Through Christ our Lord.', 'Amen.']).appendTo(div);
+      return div;
+    }
+
+    $( document ).ready(function() {
+      var params = new window.URLSearchParams(window.location.search);
+      var hour = params.get('h');
+      generalIntroduction().appendTo($('body'));
+      switch (params.get('h')) {
+        case "vigil":
+          generalIncipit().appendTo($('body'));
+          psalm(3).appendTo($('#incipit'));
+          psalm(94, 'Alleluia.', true).appendTo($('#incipit'));
+
+          // then depending on the day follow two nocturns of psalms, readings, and patristics
+          break;
+        default:
+          console.log('m');
+      }
+
+      generalConclusion().appendTo($('body'));
+    });
+
+  </script>
+</head>
+<body>
+</body>
+</html>
